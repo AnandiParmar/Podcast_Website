@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root
+{
+  --theme:rgb(6, 189, 189)
+}

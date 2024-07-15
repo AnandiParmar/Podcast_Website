@@ -1,0 +1,104 @@
+nav
+{
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    height: 70px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+ul
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav ul li 
+{
+    list-style: none; 
+    padding: 0 20px;
+    position: relative;
+}
+
+nav ul li a
+{
+    padding: 3px;
+    text-decoration: none;
+    color:#fff;
+    font-weight: 600;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    transition: 0.3s all ease-in-out;
+} 
+nav ul li a:hover
+{
+    color: var(--theme);
+}
+nav ul li a:hover::after
+{
+    content:'';
+    width: 30%;
+    color: var(--theme);
+    height: 2px;
+    background-color: var(--theme);
+    position: absolute;
+    bottom:-4px ;
+    left: 25px;
+}
+
+#mobile i
+{
+    color:#fff;
+}
+#mobile
+{
+    display: none;
+    border: 3px solid white;
+    padding:10px 15px;
+    border-radius: 10px;
+}
+
+@media screen and (max-width:768px)
+{
+    nav
+    {
+        flex-direction: row;
+    }
+    #navbar{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: fixed;
+        top:70px;
+        right: 0;
+        width: 300px;
+        height: 100vh;
+        background-color: black;
+        box-shadow: 0 40px 60px rgba(0,0,0,0.1);
+        padding: 40px 0 0 10px;
+        transition: 0.3s all ease-out;
+        
+    }
+    #navbar.active
+    {
+        right: 0;
+        width: 0;
+        padding-left: 0;
+        margin: 0;
+    }
+    nav li{
+        margin-bottom: 25px;
+    }    
+    #mobile
+    {
+        right: 0;
+        position: fixed;
+        display: block;
+        cursor: pointer;
+        margin-right: 50px;
+    }
+    #mobile i
+    {
+        font-size: 24px;
+    }
+}

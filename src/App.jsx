@@ -1,5 +1,6 @@
 
 import './App.css'
+import Navbar from './common/navbar/Navbar'
 
 function App() {
 
@@ -7,7 +8,7 @@ function App() {
   return (
     <>
      hello world
-     
+     <Navbar/>
     </>
   )
 }
