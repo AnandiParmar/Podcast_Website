@@ -1,5 +1,6 @@
 
 import './App.css'
+import Footer from './common/footer/Footer'
 import Navbar from './common/navbar/Navbar'
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <>
      hello world
      <Navbar/>
+     <Footer/>
     </>
   )
 }
