@@ -1,12 +1,14 @@
 nav
 {
+    margin-top: 0;
     align-items: center;
     justify-content: space-between;
     background-color: black;
     height: 70px;
-    padding-bottom: 0;
-    margin-bottom: 0;
+    padding-bottom:0;
+    margin-bottom: 70px;
     z-index: 1;
+    
 }
 ul
 {
@@ -62,7 +64,9 @@ nav ul li a:hover::after
 {
     nav
     {
+        position: fixed;
         flex-direction: row;
+        background-color: black;
     }
     #navbar{
         display: flex;

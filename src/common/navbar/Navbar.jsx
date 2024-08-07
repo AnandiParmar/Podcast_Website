@@ -18,7 +18,7 @@ function gotosignin(){
   navigate('/signin')
 }
   return (
-  <nav className='d-flex navbar' >
+  <nav className='d-flex navbar fixed-top' >
 
     <a href='#' className='text-white'>Navbar</a>
     <div className='container'>
@@ -30,7 +30,7 @@ function gotosignin(){
         </ul>
     </div>
     <div>
-      <button className='btn btn-secondary text-right' onClick={gotosignin}>Sign In</button>
+      <button className='btn btn-secondary text-right mr-10' onClick={gotosignin}>Sign In</button>
     </div>
 
     <div id="mobile">

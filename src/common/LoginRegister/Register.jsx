@@ -3,10 +3,11 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/ReactToastify.css';
 import pwd from '../../assets/images/pwd.png';
-import pwth from '../../assets/images/pwdh.png';
+import pwdh from '../../assets/images/pwdh.png';
+import './Register.css'
 
-
-const Register = ({ onToogleForm }) => {
+const Register = ({ onToogleForm }) => 
+{
     const [fname, setFname] = useState("");
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
@@ -57,7 +58,7 @@ const Register = ({ onToogleForm }) => {
             setConfirmPasswordError("Passwords do not match");
             return;
         }
-
+    }
         const data = {
             name: fname,
             username: username,
@@ -66,113 +67,110 @@ const Register = ({ onToogleForm }) => {
             password: password
         };
         console.log(data);
-        axios
-            .post("http://localhost:4000/register", data)
+        jsx
+        axios.post("http://localhost:4000/register", data)
             .then((res) => {
                 console.log("res.data : ", res.data);
-                if (res) {
-                    console.log(res);
-                    toast.success("Succesfully registered");
-                    onToogleForm();
-                }
+                toast.success("Successfully registered", { autoClose: 2000 });
+                onToggleForm();
             })
             .catch((error) => {
                 if (error.response && error.response.data) {
-                    // Check if the server provided a specific error message
                     if (error.response.data.message) {
-                        toast.error("Registration failed: " + error.response.data.message);
-                    } else if (
-                        error.response.data.errors &&
-                        error.response.data.errors.length > 0 &&
-                        error.response.data.errors[0].msg
-                    ) {
-                        // Check if there are validation errors and the first error message is present
-                        toast.error(
-                            "Registration failed: " + error.response.data.errors[0].msg
-                        );
+                        toast.error("Registration failed: " + error.response.data.message, { autoClose: 2000 });
+                    } else if (error.response.data.errors && error.response.data.errors.length > 0 && error.response.data.errors[0].msg) {
+                        toast.error("Registration failed: " + error.response.data.errors[0].msg, { autoClose: 2000 });
+                    } else if (error.response.data.error) {
+                        toast.error("Registration failed: " + error.response.data.error, { autoClose: 2000 });
                     } else {
-                        // Handle other types of errors
-                        toast.error("Registration failed. Please try again.");
+                        toast.error("Registration failed. Please try again.", { autoClose: 2000 });
                     }
                 } else {
-                    toast.error("An unexpected error occurred. Please try again later.");
+                    toast.error("An unexpected error occurred. Please try again later.", { autoClose: 2000 });
                 }
             });
-    };
 
 
-    return (
-        <>
-            <center>
-                <div className="flex flex-col items-center w-1/2 border-x-2 border-y-2 p-4 m-4">
-                    <div className="flex flex-col w-full mb-4">
-                        <label className="self-start mb-2 font-bold">Name:</label>
-                        <input type="text" className={`mb-2 p-2 border rounded-lg border-[rgba(110,89,75,0.4)] bg-[rgba(250,250,250,0.8)] w-full ${nameError ? "border-red-500" : ""
-                            }`} value={fname} onChange={(e) => { setFname(e.target.value); setNameError("") }} />
-                        {nameError && <span className="text-red-500">{nameError}</span>}
-                    </div>
-                    <div className="flex flex-col w-full mb-4">
-                        <label className="self-start mb-2 font-bold"  > Username:</label>
-                        <input className={`mb-2 p-2 border rounded-lg border-[rgba(110,89,75,0.4)] bg-[rgba(250,250,250,0.8)] w-full ${nameError ? "border-red-500" : ""
-                            }`} type="text" value={username} onChange={(e) => { setUsername(e.target.value); setUsernameError("") }} />
-                        {usernameError && <span className="text-red-500">{usernameError}</span>}
 
-                    </div>
-                    <div className="flex flex-col w-full mb-4">
-                        <label className="self-start mb-2 font-bold">Email</label>
-                        <input className={`mb-2 p-2 border rounded-lg border-[rgba(110,89,75,0.4)] bg-[rgba(250,250,250,0.8)] w-full ${nameError ? "border-red-500" : ""
-                            }`} type="email" value={email} onChange={(e) => { setEmail(e.target.value); setEmailError(""); }} />
-                        {emailError && <span className="text-red-500">{emailError}</span>}
+        return (
+            <>
+                <center>
+                    <div className="flex flex-col items-center w-1/2 border-x-2 border-y-2 p-4 m-4 form">
+                        <div className="flex flex-col w-full mb-4">
+                            <label className="self-start mb-2 font-bold">Name:</label>
+                            <input type="text" className={`mb-2 p-2 border rounded-lg border-[rgba(110,89,75,0.4)] bg-[rgba(250,250,250,0.8)] w-full ${nameError ? "border-red-500" : ""
+                                }`} value={fname} onChange={(e) => { setFname(e.target.value); setNameError("") }} />
+                            {nameError && <span className="text-red-500">{nameError}</span>}
+                        </div>
+                        <div className="flex flex-col w-full mb-4">
+                            <label className="self-start mb-2 font-bold"  > Username:</label>
+                            <input className={`mb-2 p-2 border rounded-lg border-[rgba(110,89,75,0.4)] bg-[rgba(250,250,250,0.8)] w-full ${usernameError ? "border-red-500" : ""
+                                }`} type="text" value={username} onChange={(e) => { setUsername(e.target.value); setUsernameError("") }} />
+                            {usernameError && <span className="text-red-500">{usernameError}</span>}
 
-                    </div>
-                    <div className="flex flex-col w-full mb-4">
-                        <label className="self-start mb-2 font-bold">Password</label>
-                        <input className={`mb-2 p-2 border rounded-lg border-[rgba(110,89,75,0.4)] bg-[rgba(250,250,250,0.8)] w-full ${nameError ? "border-red-500" : ""
-                            }`} type="password" value={password} onChange={(e) => { setPassword(e.target.value); setPasswordError("") }} />
-                        {passwordError && <span className="text-red-500">{passwordError}</span>}
-                    </div>
+                        </div>
+                        <div className="flex flex-col w-full mb-4">
+                            <label className="self-start mb-2 font-bold">Email</label>
+                            <input className={`mb-2 p-2 border rounded-lg border-[rgba(110,89,75,0.4)] bg-[rgba(250,250,250,0.8)] w-full ${emailError ? "border-red-500" : ""
+                                }`} type="email" value={email} onChange={(e) => { setEmail(e.target.value); setEmailError(""); }} />
+                            {emailError && <span className="text-red-500">{emailError}</span>}
 
-                    <div className="flex flex-col w-full mb-4">
-                        <label className="self-start mb-2 font-bold">Confirm Password</label>
-                        <input className={`mb-2 p-2 border rounded-lg border-[rgba(110,89,75,0.4)] bg-[rgba(250,250,250,0.8)] w-full ${nameError ? "border-red-500" : ""
-                            }`} type="password" value={confirmPassword} onChange={(e) => { setConfirmPassword(e.target.value); setConfirmPasswordError("") }} /><br />
-                        {confirmPasswordError && <span className="text-red-500">{confirmPasswordError}</span>}
+                        </div>
+                        <div className="flex flex-col w-full mb-4 relative">
+                            <label className="self-start mb-2 font-bold">Password</label><br />
+                            <input className={` mb-2 p-2 border rounded-lg border-[rgba(110,89,75,0.4)] bg-[rgba(250,250,250,0.8)] w-full ${passwordError ? "border-red-500" : ""
+                                }`} type={isPasswordVisible ? "text" : "password"} value={password} onChange={(e) => { setPassword(e.target.value); setPasswordError("") }} />
+                            {passwordError && <span className="text-red-500">{passwordError}</span>}
+                            <button onClick={togglePasswordVisibility} className="pwd">
+                                <img src={isPasswordVisible ? pwd : pwdh} alt="" className="h-8 w-8" />
+                            </button>
+                        </div>
 
-                    </div>
-                    <button
-                        className="w-full py-2 mt-8 bg-purple-800 text-white text-xl rounded-lg cursor-pointer"
-                        onClick={handleSubmit}
-                    >
-                        Register
-                    </button>
-                    <div className="flex items-center mt-4">
-                        Already have an account?
-                        <div
-                            className="ml-2 text-[rgba(73,47,29,1)] cursor-pointer"
-                            onClick={onToogleForm}
+                        <div className="flex flex-col w-full mb-4 relative">
+                            <label className="self-start mb-2 font-bold">Confirm Password</label><br />
+                            <input className={` mb-2 p-2 border rounded-lg border-[rgba(110,89,75,0.4)] bg-[rgba(250,250,250,0.8)] w-full ${confirmPasswordError ? "border-red-500" : ""
+                                }`} type={isPasswordVisible ? "text" : "password"} value={confirmPassword} onChange={(e) => { setConfirmPassword(e.target.value); setConfirmPasswordError("") }} />
+                            {confirmPasswordError && <span className="text-red-500">{confirmPasswordError}</span>}
+                            <button onClick={togglePasswordVisibility} className="pwd">
+                                <img src={isPasswordVisible ? pwd : pwdh} alt="" className="h-8 w-8" />
+                            </button>
+                        </div>
+                        <button
+                            className="w-full py-2 mt-8 bg-purple-800 text-white text-xl rounded-lg cursor-pointer"
+                            onClick={handleSubmit}
                         >
-                            LOGIN
+                            Register
+                        </button>
+                        <div className="flex items-center mt-4">
+                            Already have an account?
+                            <div
+                                className="ml-2 text-[rgba(73,47,29,1)] cursor-pointer"
+                                onClick={onToogleForm}
+                            >
+                                LOGIN
+                            </div>
                         </div>
                     </div>
-            </div>
-            </center>
-        
-        
+                </center>
 
-            <ToastContainer
-                position="top-right"
-                autoClose={true}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHovert
-                theme="light"
-                transition="Bounce"
-            />
-        </>
-    )
+
+
+                <ToastContainer
+                    position="top-right"
+                    autoClose={2000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick={true}
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                    transition="Bounce"
+                />
+
+            </>
+        )
+    
 }
 export default Register;

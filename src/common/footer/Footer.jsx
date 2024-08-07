@@ -4,7 +4,7 @@ import './Footer.css'
 const Footer =() =>
 {
    return(
-    <footer className="text-center text-lg-start ">
+    <footer className="text-center mt-20 text-lg-start ">
 
     <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
        
