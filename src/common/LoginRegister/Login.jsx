@@ -16,44 +16,47 @@ const Login = ({ onToggleForm }) => {
         setIsPasswordVisible(!isPasswordVisible);
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!username.trim()) {
-            setUsernameError("Username is required");
-            return;
-        }
-        if (!password.trim()) {
-            setPasswordError("Password is required");
-            return;
-        }
+        try {
+            if (!username.trim()) {
+                setUsernameError("Username is required");
+                return;
+            }
+            if (!password.trim()) {
+                setPasswordError("Password is required");
+                return;
+            }
 
-        const data={
-            username:username,
-            password:password
-        }
-        const res = axios.post("http://localhost:4000/login", data)
-        
-            .then((res) => {
-                console.log("res.data : ", res.data);
-                toast.success("Successfully registered", { autoClose: 3000 });
-                onToggleForm();
-            })
-            .catch((error) => {
-                if (error.response && error.response.data) {
-                    if (error.response.data.message) {
-                        toast.error("Registration failed: " + error.response.data.message, { autoClose: 3000 });
-                    } else if (error.response.data.errors && error.response.data.errors.length > 0 && error.response.data.errors[0].msg) {
-                        toast.error("Registration failed: " + error.response.data.errors[0].msg, { autoClose: 3000 });
-                    } else if (error.response.data.error) {
-                        toast.error("Registration failed: " + error.response.data.error, { autoClose: 3000 });
-                    } else {
-                        toast.error("Registration failed. Please try again.", { autoClose: 3000 });
-                    }
-                } else {
-                    toast.error("An unexpected error occurred. Please try again later.", { autoClose: 3000 });
+            const data = {
+                username: username,
+                password: password
+            }
+            const res = await axios.post("http://localhost:4000/login", data)
+                
+            console.log(res.data.status);
+            console.log(res.data);
+            if (res.data.status === 200) {
+                toast.success("Login Success");
+            }
+            else if (res.data.status === 404) {
+                if (res.data.message === "Enter valid user") {
+                    toast.error("Enter valid user");
+                } else if (res.data.message === "Enter valid password") {
+                    toast.error("Enter valid password");
                 }
-            });
+                else {
+                    toast.error("Login failed: " + res.data.message);
+                }
+            } else {
+                toast.error("Login failed");
+            }
+        }
 
+        catch (error) {
+            console.error("Login error:", error);
+            toast.error("An error occurred. Please try again later.");
+        }
     }
     return (
         <>
@@ -92,6 +95,12 @@ const Login = ({ onToggleForm }) => {
                     </div>
                 </div>
             </center>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                newestOnTop={false}
+                pauseOnHover
+            />
         </>
     )
 }
