@@ -76,7 +76,7 @@ const Register = ({ onToggleForm }) => {
             .then((res) => {
                 console.log("res.data : ", res.data);
                 toast.success("Successfully registered", { autoClose: 3000 });
-                onToggleForm();
+                
             })
             .catch((error) => {
                 if (error.response && error.response.data) {
