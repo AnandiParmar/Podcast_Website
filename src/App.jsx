@@ -8,7 +8,7 @@ import Home from './pages/Home'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Podcast from './pages/Podcast'
 import Signin from './pages/Signin'
-
+import profile from './pages/profile'
 function App() {
 
 
@@ -20,6 +20,7 @@ function App() {
           <Route path="/" exact Component={Home}></Route>
           <Route path="/about" exact Component={About}></Route>
           <Route path='/podcast' exact Component={Podcast}></Route>
+          <Route path='/profile' exact Component={profile}></Route>
           <Route path='/signin' exact Component={Signin}></Route>
         </Routes>
         <Footer />

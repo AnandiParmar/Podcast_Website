@@ -27,6 +27,8 @@ function gotosignin(){
             <li><Link to="/about">About us</Link></li>
             <li><Link to="/podcast">Podcast</Link></li>
             <li><Link to="/contactus">Contact Us</Link></li>
+            <li><Link to="/profile">Profile</Link></li>
+            
         </ul>
     </div>
     <div>

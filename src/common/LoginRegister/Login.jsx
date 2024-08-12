@@ -5,7 +5,7 @@ import 'react-toastify/ReactToastify.css';
 import pwd from '../../assets/images/pwd.png';
 import pwdh from '../../assets/images/pwdh.png';
 import './Register.css'
-
+import Cookies from "js-cookie";
 const Login = ({ onToggleForm }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -32,12 +32,12 @@ const Login = ({ onToggleForm }) => {
                 username: username,
                 password: password
             }
-            const res = await axios.post("http://localhost:4000/login", data)
-                
+            const res = await axios.post("http://localhost:4000/login", data)                
             console.log(res.data.status);
             console.log(res.data);
             if (res.data.status === 200) {
                 toast.success("Login Success");
+                Cookies.set("user", res.data.token, { expires: 2 });
             }
             else if (res.data.status === 404) {
                 if (res.data.message === "Enter valid user") {
