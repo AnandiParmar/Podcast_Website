@@ -87,23 +87,9 @@ function profile() {
     )
   }
   else {
-
-    toast.error("First Log In");
-    // toast.dismiss();
-
-    return (
-      <>      
-      <h1 className='pt-25'>user have to login first</h1>
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          newestOnTop={false}
-          pauseOnHover
-          limit={1}
-        />
-      </>
-
-    )
+      useEffect(()=>{
+        navigate("/signin");
+      })
   }
 
 }

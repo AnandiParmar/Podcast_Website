@@ -26,7 +26,7 @@ footer  #icon i
     padding-top:8px ;
 }
 footer  #icon i:hover{
-    color: var(--green);
-    border:2px solid var(--green)!important;
+    color: var(--theme);
+    border:2px solid var(--theme)!important;
    
 }

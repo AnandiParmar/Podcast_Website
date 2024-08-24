@@ -1,6 +1,11 @@
-export default function Podcast(){
-    return <>
-       <h1>PODCAST PAkGE</h1>
-       
-    </> 
+import React from 'react'
+
+function Podcast() {
+  return (
+    <>
+
+    </>
+  )
 }
+
+export default Podcast
