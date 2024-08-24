@@ -1,0 +1,76 @@
+.audio-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-column-gap: 16px;
+  grid-row-gap: 30px;
+  margin-top: 15px;
+  padding: 6% 4%;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  filter: brightness(0.7);
+}
+
+.card .myh2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  margin: 5px 0;
+}
+
+.card .myh3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  margin: 6px 0;
+}
+
+.card .myp {
+  font-size: 14px;
+}
+
+.card {
+  position: relative;
+  width: fit-content;
+  overflow: hidden;
+}
+
+.btn-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: 0.6s;
+}
+
+.btn-overlay:hover {
+  opacity: 1;
+}
+
+.plybtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  background-color: #000;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  font-size: 25px;
+}

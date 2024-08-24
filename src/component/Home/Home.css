@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+@media only screen and (min-width: 375px) {
+  h2 {
+    font-size: 50px;
+    font-weight: 700;
+    text-align: center;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "raleway";
+}
+
+body {
+  overflow: hidden;
+}
+
+.herocontainer {
+  width: 100%;
+  height: 100vh;
+}
+
+.overlay {
+  height: 100vh;
+  width: 100%;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.container {
+  max-width: 640px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: absolute;
+  width: 77%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+h2 {
+  font-size: 50px;
+  font-weight: 700;
+}
+
+h2 span {
+  color: rgb(126, 17, 126);
+}
+
+h3 {
+  font-size: 25px;
+  padding-top: 10px;
+  color: #fff;
+  text-decoration: underline;
+  text-underline-position: below;
+  text-decoration-color: burlywood;
+  text-underline-offset: 8px;
+}
+
+p {
+  margin-top: 20px;
+  text-align: center;
+  display: block;
+}
+
+.container-self-center {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.play {
+  padding: 7px 20px;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+}
+
+.play i {
+  padding-right: 7px;
+}
+
+.play:hover {
+  background-color: rgb(126, 17, 126);
+  color: #fff;
+}
+
+.menu-subscribe {
+  margin-bottom: 0;
+}
+
+li {
+  list-style: none;
+  text-align: center;
+}
+
+li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#menu {
+  padding: 0;
+}
+
+.menu-subscribe li {
+  margin: 0 20px;
+}
+
+.label {
+  font-size: 20px;
+  text-decoration: underline;
+  text-decoration-color: rgb(126, 17, 126);
+  text-underline-offset: 8px;
+}
+
+.menu-subscribe li i {
+  padding: 5px;
+}
