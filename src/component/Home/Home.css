@@ -8,7 +8,7 @@
   }
 }
 
-* {
+/* * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -17,7 +17,7 @@
 
 body {
   overflow: hidden;
-}
+} */
 
 .herocontainer {
   width: 100%;
@@ -36,7 +36,7 @@ video {
   filter: brightness(0.7);
 }
 
-.container {
+.home-container {
   max-width: 640px;
   padding-left: 15px;
   padding-right: 15px;

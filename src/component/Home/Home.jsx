@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.css";
-import vid from "../../assets/v2.mp4";
+import vid from "../../assets/video-section.mp4";
 // import "./../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const Home = () => {
@@ -9,7 +9,7 @@ const Home = () => {
       <div className="herocontainer">
         <div className="overlay">
           <video src={vid} autoPlay loop muted></video>
-          <div className="container overlay-container container-self-center">
+          <div className="home-container overlay-container container-self-center">
             <h2 className="mb-24 mb-sm-24 mb-md-20">
               Best <span>PODCASTS</span> <br />
               for Curious Mind

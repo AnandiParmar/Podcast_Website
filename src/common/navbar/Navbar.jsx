@@ -22,7 +22,7 @@ function gotosignin(){
 
     <a href='#' className='text-white'>Navbar</a>
     <div className='container'>
-        <ul className={isOpen==true?'#navbar  active mx-auto animate-slideInRight':'#navbar mx-auto'} id="navbar">
+        <ul className={isOpen==true?'#navbar  active mx-auto ':'#navbar mx-auto'} id="navbar">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About us</Link></li>
             <li><Link to="/podcast">Podcast</Link></li>
