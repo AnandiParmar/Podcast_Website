@@ -11,7 +11,7 @@ function Navbar() {
 const handleClick = e => {
   e.preventDefault();
   setIsOpen(!isOpen);
-  console.log(isOpen);
+  
 };
 
 function gotosignin(){

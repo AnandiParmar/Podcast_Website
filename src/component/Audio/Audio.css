@@ -3,10 +3,15 @@
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-column-gap: 16px;
   grid-row-gap: 30px;
-  margin-top: 15px;
+  margin-top: 75px;
   padding: 6% 4%;
 }
-
+.card {
+  position: relative;
+  width:350px;
+  overflow: hidden;
+  min-height: 350px;
+}
 .content{
   display: flex;
   flex-direction: column;
@@ -33,36 +38,36 @@
   font-weight: 600;
   color: #555;
   margin: 6px 0;
+  text-align: center;
 }
 
 .card .myp {
   font-size: 14px;
 }
 
-.card {
-  position: relative;
-  width: fit-content;
-  overflow: hidden;
-}
+
 
 .btn-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 25%;
+  left:40%;
   width: 100%;
   height: 100%;
-  display: flex;
+  z-index: 1;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: 0.6s;
+  justify-content: center; */
+  opacity: 0; 
+  transition: 0.2s; 
 }
 
-.btn-overlay:hover {
+.card:hover .btn-overlay{
   opacity: 1;
 }
 
 .plybtn {
+  text-decoration: none;
+  background-color: #000;
   display: flex;
   align-items: center;
   justify-content: center;

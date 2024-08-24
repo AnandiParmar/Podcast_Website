@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Podcast from './pages/Podcast'
 import Signin from './pages/Signin'
 import profile from './pages/profile'
+import Singlepage from './pages/Singlepage'
 function App() {
 
 
@@ -22,6 +23,8 @@ function App() {
           <Route path='/podcast' exact Component={Podcast}></Route>
           <Route path='/profile' exact Component={profile}></Route>
           <Route path='/signin' exact Component={Signin}></Route>
+          <Route path="/Singlepage/:id" exact Component={Singlepage}></Route>
+         
         </Routes>
         <Footer />
       </Router>
