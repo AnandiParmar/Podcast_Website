@@ -4,6 +4,7 @@ import axios from 'axios';
 import 'react-toastify/ReactToastify.css';
 import { useParams, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/ReactToastify.css';
 function profile() {
   const [Data, setData] = useState({ name: "", email: "" });
   const [user, setUser] = useState(false);
@@ -87,9 +88,19 @@ function profile() {
     )
   }
   else {
-      useEffect(()=>{
-        navigate("/signin");
-      })
+    toast.error("user have to login first");
+    return(
+    <>
+      <h1 className='pt-20 mb-20 h-full'>You have to Log in First</h1>
+     
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        newestOnTop={false}
+        pauseOnHover
+      />
+    </>
+    )
   }
 
 }
