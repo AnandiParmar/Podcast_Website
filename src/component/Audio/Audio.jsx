@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Audio = () => {
 
   const [data, setData] = useState([]);
-  const [track, setTrack] = useState();
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get("http://localhost:4000/podcast")
