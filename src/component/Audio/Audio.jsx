@@ -3,10 +3,14 @@ import "./Audio.css";
 import image from "../../assets/images/image_heading.jpg";
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Audio = () => {
 
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
+  
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,9 +34,11 @@ const Audio = () => {
 
             <div className="btn-overlay">
 
-              <Link to={`/singlepage/${item._id}`}>
-                <i className="fa-solid fa-play plybtn"></i>
-              </Link>
+              {/* <Link to={`/singlepage/${item._id}`}>
+                
+              </Link> */}
+              <i className="fa-solid fa-play plybtn" onClick={()=>navigate(`/singlepage/${item._id}`)}></i>
+              
             </div>
             <img src={`${item.thumbnail.replace(/"/g, '')}`} alt="" className="img" />
             <div className="content">

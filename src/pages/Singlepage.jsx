@@ -78,6 +78,7 @@ function Singlepage() {
             </button>
             <button className="px-4 py-2 my-3 mx-2 text-white bg-indigo-500 rounded-lg hover:bg-indigo-700" onClick={handleNext} >
             <i class="fa-solid fa-forward-step"></i>
+            
             </button>
 
           </div>
