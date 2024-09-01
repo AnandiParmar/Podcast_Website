@@ -59,7 +59,15 @@ nav ul li a:hover::after
     padding:10px 15px;
     border-radius: 10px;
 }
-
+#navbar{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+#logo{
+    height: 60px;
+    width: 120px;
+}
 @media screen and (max-width:768px)
 {
     nav
