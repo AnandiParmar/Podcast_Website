@@ -24,7 +24,7 @@ function gotosignin(){
     <div className='container'>
         <ul className={isOpen==true?'#navbar  active mx-auto ':'#navbar mx-auto'} id="navbar">
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About us</Link></li>
+            <li><Link to="/about">Add Podcast</Link></li>
             <li><Link to="/podcast">Podcast</Link></li>
             <li><Link to="/contactus">Contact Us</Link></li>
             <li><Link to="/profile">Profile</Link></li>            

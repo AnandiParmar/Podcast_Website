@@ -56,13 +56,13 @@ function Singlepage() {
   return (
     <>
 
-      <div className="bg-black text-white py-5 mt-20 flex flex-col justify-center items-center h-screen">
+      <div className="bg-black text-white py-5 mt-20 flex flex-col justify-center items-center h-fit">
         <div className=" flex flex-col items-center w-full h-max">
 
           <img
             src={imgurl}
             alt={Data.title}
-            className="w-1/3  rounded-lg"
+            className="w-1/3 h-1/3 rounded-lg"
           />
 
           <h2 className="text-lg font-bold uppercase">{Data.title}</h2>
