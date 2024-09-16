@@ -23,22 +23,19 @@ function gotosignin(){
     <img src={podcast_logo} alt="" id='logo'/>
     <div className='container'>
         <ul className={isOpen==true?'#navbar active mx-auto animate-slideInRight':'#navbar mx-auto'} id="navbar">
-            <div className='d-flex'><li><Link to="/">Home</Link></li>
+            <div className='menu'>
+            <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About us</Link></li>
             <li><Link to="/podcast">Podcast</Link></li>
             <li><Link to="/contactus">Contact Us</Link></li>
             <li><Link to="/profile">Profile</Link></li></div>
             <div>
-      <button className='btn btn-secondary text-right mr-10' onClick={gotosignin}>Sign In</button>
-    </div>     
+              <button className='btn btn-secondary text-right mr-10' onClick={gotosignin}>Sign In</button>
+            </div>     
         </ul>
-       
     </div>
-    
-
     <div id="mobile">
         <i id="bar" onClick={handleClick} className={isOpen==true?'fas fa-bars ':'fas fa-times'}></i>
-      
     </div>
   </nav>
 

@@ -15,17 +15,25 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar />
+      <Navbar />
         <Routes>
+       
           <Route path="/" exact Component={Home}></Route>
           <Route path="/about" exact Component={About}></Route>
           <Route path='/podcast' exact Component={Podcast}></Route>
           <Route path='/profile' exact Component={profile}></Route>
+          <Route>
           <Route path='/signin' exact Component={Signin}></Route>
+          </Route>
         </Routes>
         <Footer />
       </Router>
 
+      {/* <Router>
+        <Routes>
+        
+        </Routes>
+      </Router> */}
       
 
 
