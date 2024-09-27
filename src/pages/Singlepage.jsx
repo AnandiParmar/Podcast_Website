@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Singlepage() {
-
   const navigate = useNavigate();
   let { id } = useParams();
   const [Data, setData] = useState([]);
