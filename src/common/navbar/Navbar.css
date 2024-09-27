@@ -8,7 +8,7 @@ nav
     padding-bottom:0;
     margin-bottom: 70px;
     z-index: 1;
-    
+    display: flex;
 }
 ul
 {
@@ -47,7 +47,9 @@ nav ul li a:hover::after
     bottom:-4px ;
     left: 25px;
 }
-
+.menu{
+    display: flex;
+}  
 #mobile i
 {
     color:#fff;
@@ -66,14 +68,14 @@ nav ul li a:hover::after
 }
 #logo{
     height: 60px;
-    width: 120px;
+    width: 60px;
 }
 @media screen and (max-width:768px)
 {
     nav
     {
         position: fixed;
-        flex-direction: row;
+        flex-direction: column;
         background-color: black;
     }
     #navbar{
@@ -101,7 +103,15 @@ nav ul li a:hover::after
     }
     nav li{
         margin-bottom: 25px;
-    }    
+        
+    }  
+    .menu{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        
+    }  
     #mobile
     {
         right: 0;
