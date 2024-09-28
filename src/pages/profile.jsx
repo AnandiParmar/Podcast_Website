@@ -1,16 +1,24 @@
+
 import React, { useEffect, useState } from 'react';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import 'react-toastify/ReactToastify.css';
 import { useParams, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/ReactToastify.css';
+import { data } from 'autoprefixer';
+import { Result } from 'postcss';
 function profile() {
-  const [Data, setData] = useState({ name: "", email: "" });
+  const [Data, setData] = useState({ name: "", email: "", userId: "" });
   const [user, setUser] = useState(false);
+  const [podcast, setpodcast] = useState([])
   const navigate = useNavigate();
 
   useEffect(() => {
+    //Fetching data to get user profile
     const fetchData = async () => {
       try {
         const userToken = Cookies.get("user");
@@ -23,17 +31,34 @@ function profile() {
         setData({
           name: res.data.data.username,
           email: res.data.data.email,
+          userId: res.data.data._id
         });
-        //  console.log(res.username);
+        console.log(Data);
         setUser(true); // Set user to true after successful login
       }
       catch (error) {
         console.error("Error fetching user :", error);
       }
     };
+  
+    //fetching podcast which is uploaded by user
+    const fetchPodcastData = async (userId) => {
+      try {
+        const res = await axios.get("http://localhost:4000/podcast");
+        let result = res.data.data;
+        setpodcast(result.filter((item) => item.userId === userId));
+      } catch (error) {
+        console.error("Error fetching podcast :", error);
+      }
+    };
     fetchData();
+    fetchPodcastData(Data.userId);
+  }, [Data.userId]);
+  
+  
+  
 
-  }, []);
+  //Logout code
   const logout = async () => {
     try {
       await axios.delete("http://localhost:4000/logout", {
@@ -50,6 +75,7 @@ function profile() {
       console.error("Error logging out:", error);
     }
   };
+  // delete Account
   const delAcc = async () => {
     try {
       await axios.delete("http://localhost:4000/delete_account", {
@@ -83,23 +109,36 @@ function profile() {
             <button className='btn btn-lg' onClick={delAcc}>Delete Account</button>
           </div>
         </div>
-      </>
+
+        <div className='mt-5'>
+          <h1 className='text-center'>Your Podcast</h1>
+          
+        </div>
+        <div className='d-flex flex-row items-center justify-center'>       
+        {podcast.map((item)=>(
+        <div className='w-80 h-80 m-4 p-4'>
+          <img src={item.thumbnail} alt="" className=''/>
+          <h2>{item.title}</h2>
+        </div>
+       ))}
+       </div>
+</>
 
     )
   }
   else {
     toast.error("user have to login first");
-    return(
-    <>
-      <h1 className='pt-20 mb-20 h-full'>You have to Log in First</h1>
-     
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        newestOnTop={false}
-        pauseOnHover
-      />
-    </>
+    return (
+      <>
+        <h1 className='pt-20 mb-20 h-full'>You have to Log in First</h1>
+
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          newestOnTop={false}
+          pauseOnHover
+        />
+      </>
     )
   }
 

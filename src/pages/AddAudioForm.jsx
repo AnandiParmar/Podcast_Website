@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/ReactToastify.css';
@@ -7,6 +8,7 @@ import { jwtDecode } from 'jwt-decode';
 import Cookies from 'js-cookie';
 
 function AddAudioForm() {
+    const navigate = useNavigate();
     const [title, settitle] = useState("");
     const [artist, setartist] = useState("");
     const [desc, setdesc] = useState("");
@@ -37,6 +39,20 @@ function AddAudioForm() {
 
 
     const handleSubmit = async () => {
+        const token = Cookies.get("user");
+
+        const decodedToken = jwtDecode(token);
+        setuserId(decodedToken._id);
+        if(userId)
+        {
+            data.append("userId", userId);
+        }
+        else
+        {
+            navigate('/signin')
+        }
+       
+
         if (!title) {
             setTitleError("Enter title of podcast");
             document.getElementById("title").focus();
@@ -79,13 +95,9 @@ function AddAudioForm() {
         data.append("categoryId", category);
         data.append("date", date);
         data.append("track", track);
-
+        
         try {
-            const token = Cookies.get("user");
-
-            const decodedToken = jwtDecode(token);
-            setuserId(decodedToken._id);
-            data.append("userId", userId);
+           
             const res = await axios.post("http://localhost:4000/podcast/", data, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -114,7 +126,7 @@ function AddAudioForm() {
     }
     return (
         <>
-            <center>
+            <center className='pt-11'>
                 <div className="flex flex-col items-center w-1/2 border-x-2 border-y-2 p-4 m-4 form">
                     <div className="flex flex-col w-full mb-4">
 

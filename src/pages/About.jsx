@@ -1,5 +1,5 @@
 import React from 'react'
-import AddAudioForm from '../component/AddAudio/AddAudioForm'
+import AddAudioForm from './AddAudioForm'
 
 export default function About() {
   return (
