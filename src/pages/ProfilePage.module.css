@@ -1,0 +1,48 @@
+.box
+{
+  height:max-content;
+  width:max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin:10px;
+  padding: 0;
+ 
+}
+.imgbox
+{
+  position: relative;
+  height:200px;
+  width:300px;
+}
+.imgbox img
+{
+  border-radius: 40px;
+  height: 100%;
+  width:100%;
+}
+.imgbox .iconbar
+{
+  position: absolute;
+  bottom:5%;
+  right:5px;
+  z-index: 1;
+}
+.imgbox .iconbar i
+{
+  padding: 15px 15px;
+  margin: 0px 5px;
+  font-size: 20px;
+  color: #fff;
+  background-color: #000;
+  border-radius: 100%;
+  visibility:hidden;
+}
+.imgbox .iconbar i:hover{
+  background-color:var(--theme);
+}
+.box:hover .imgbox .iconbar i
+{
+  visibility: visible;
+}

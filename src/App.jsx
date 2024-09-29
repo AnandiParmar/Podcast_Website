@@ -11,6 +11,7 @@ import Signin from './pages/Signin'
 import profile from './pages/profile'
 import Singlepage from './pages/Singlepage'
 import AddAudioForm from './pages/AddAudioForm'
+import Edit from './pages/Edit';
 function App() {
 
 
@@ -26,6 +27,8 @@ function App() {
           <Route path='/signin' exact Component={Signin}></Route>
           <Route path="/Singlepage/:id" exact Component={Singlepage}></Route>
           <Route path="/AddAudioForm" exact Component={AddAudioForm}></Route>
+          <Route path="/edit/:id" exact Component={Edit}></Route>
+          
         </Routes>
         <Footer />
       </Router>

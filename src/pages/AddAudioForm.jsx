@@ -17,14 +17,28 @@ function AddAudioForm() {
     const [option, setoption] = useState([]);
     const [userId, setuserId] = useState("");
     const [url, seturl] = useState("");
-    const [date,setdate]=useState("");
+    const [date, setdate] = useState("");
     const [titleError, setTitleError] = useState("");
     const [artError, setartError] = useState("");
     const [descError, setdescError] = useState("");
     const [catError, setcatError] = useState("");
     const [trackError, settrackError] = useState("");
     const [imgError, setimgError] = useState("");
-
+    const[token,settoken]=useState("");
+    useEffect(() => {
+        const token = Cookies.get("user");
+        settoken(token);
+        if (!token) {
+          navigate("/signin");
+        } else {
+            const decodedToken = jwtDecode(token);
+            setuserId(decodedToken._id);
+          if (!decodedToken) {
+            navigate("/signin");
+          }
+        }
+      }, [navigate]);
+    
     useEffect(() => {
         axios.get("http://localhost:4000/category")
             .then((res) => {
@@ -39,20 +53,8 @@ function AddAudioForm() {
 
 
     const handleSubmit = async () => {
-        const token = Cookies.get("user");
-
-        const decodedToken = jwtDecode(token);
-        setuserId(decodedToken._id);
-        if(userId)
-        {
-            data.append("userId", userId);
-        }
-        else
-        {
-            navigate('/signin')
-        }
        
-
+     
         if (!title) {
             setTitleError("Enter title of podcast");
             document.getElementById("title").focus();
@@ -68,7 +70,7 @@ function AddAudioForm() {
             document.getElementById("desc").focus();
             return;
         }
-       
+
         if (!category) {
             setcatError("Select Category of podcast");
             document.getElementById("cat").focus();
@@ -95,9 +97,9 @@ function AddAudioForm() {
         data.append("categoryId", category);
         data.append("date", date);
         data.append("track", track);
-        
+        data.append("userId", userId);
         try {
-           
+
             const res = await axios.post("http://localhost:4000/podcast/", data, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -170,7 +172,7 @@ function AddAudioForm() {
                         <div className="flex flex-col w-full mb-4 relative">
                             <label className="self-start mb-2 font-bold">Choose Podcast file:</label><br />
                             <input type="file" id='track' className={`mb-2 p-2 border rounded-lg bg-[rgba(250,250,250,0.8)] w-full ${trackError ? "border-red-500" : ""
-                                }`}  onChange={handleFileChange} />
+                                }`} onChange={handleFileChange} />
                         </div>
                         {trackError && <span className="text-red-500">{trackError}</span>}
 

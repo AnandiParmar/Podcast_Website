@@ -1,16 +1,13 @@
 
 import React, { useEffect, useState } from 'react';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import 'react-toastify/ReactToastify.css';
 import { useParams, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/ReactToastify.css';
-import { data } from 'autoprefixer';
-import { Result } from 'postcss';
+import styles from './ProfilePage.module.css';
+
 function profile() {
   const [Data, setData] = useState({ name: "", email: "", userId: "" });
   const [user, setUser] = useState(false);
@@ -40,7 +37,7 @@ function profile() {
         console.error("Error fetching user :", error);
       }
     };
-  
+
     //fetching podcast which is uploaded by user
     const fetchPodcastData = async (userId) => {
       try {
@@ -54,9 +51,9 @@ function profile() {
     fetchData();
     fetchPodcastData(Data.userId);
   }, [Data.userId]);
-  
-  
-  
+
+
+
 
   //Logout code
   const logout = async () => {
@@ -90,7 +87,37 @@ function profile() {
       console.error("Error deleting Account:", error);
     }
   };
+  //delete Podcast
+  const del_podcast = async (podcastid) => {
+    try {
+      await axios.delete(`http://localhost:4000/delete_podcast/${podcastid}`, {
+        headers: {
+          Authorization: `Bearer ${Cookies.get("user")}`,
+        }
+      }).then(() => {
+        navigate("/profile") // Reload the page
+        toast.success("successfully deleted podcast")
+      })
+        .catch((error) => {
+          if (error.response) {
+            // Server responded with an error
+            console.error(error.response.data);
+          } else if (error.request) {
+            // Request failed (e.g., network error)
+            console.error(error.request);
+          } else {
+            // Other error
+            console.error(error.message);
+          }
+        });
 
+      console.log(podcastid);
+    }
+    catch (error) {
+      console.error("Error deleting podcast:", error);
+    }
+
+  }
   if (user) {
     return (
       <>
@@ -112,17 +139,34 @@ function profile() {
 
         <div className='mt-5'>
           <h1 className='text-center'>Your Podcast</h1>
-          
+
         </div>
-        <div className='d-flex flex-row items-center justify-center'>       
-        {podcast.map((item)=>(
-        <div className='w-80 h-80 m-4 p-4'>
-          <img src={item.thumbnail} alt="" className=''/>
-          <h2>{item.title}</h2>
+        <div className='d-flex flex-wrap items-center justify-center w-screen overflow-hidden'>
+          {podcast.map((item) => (
+            <div className={styles.box}>
+              <div className={styles.imgbox}>
+                <img src={item.thumbnail} alt="" className='' />
+                <div className={styles.iconbar}>
+                  <button onClick={() => {
+                    if (window.confirm("Are you sure you want to delete this podcast?")) {
+                      del_podcast(item._id);
+                    }
+                  }}>
+                    <abbr title="Delete Podcast"><i class="fa-solid fa-trash"></i></abbr>
+                  </button>
+                  <button onClick={() => {
+                    navigate(`/edit/${item._id}`)
+                  }}>
+                    <abbr title="Edit Podcast"><i class="fa-solid fa-pen-to-square"></i></abbr>
+                  </button>
+                </div>
+              </div>
+              <hr className='mx-auto w-50' />
+              <h2 className='font-mono text-xl font-bold uppercase'>{item.title}</h2>
+            </div>
+          ))}
         </div>
-       ))}
-       </div>
-</>
+      </>
 
     )
   }
