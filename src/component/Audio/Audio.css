@@ -1,52 +1,156 @@
-.audio-box {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  grid-column-gap: 16px;
-  grid-row-gap: 30px;
-  margin-top: 75px;
-  padding: 2% 2%;
+.audio{
+  width: 100%;
+  padding: 70px 0;
 }
-.card {
-  position: relative;
-  width:350px;
-  overflow: hidden;
-  min-height: 350px;
-  align-items: center;
-  justify-content: center;
-}
-.content{
+
+.audio h1{
+  font-size: 3rem;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.audio h1 span{
+  color: #fac031;
+  margin-left: 15px;
+  font-family: mv boli;
+}
+
+/* .audio-row h1 span::after{
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #fac031;
+  display: block;
+  position: relative;
+  bottom: 15px;
+} */
+
+.audio .audio_box{
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+  /* grid-gap: 15px; */
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
 
-.card img {
-  width: 70%;
-  height:50%;
-  border-radius: 5px;
-  filter: brightness(0.7);
+.audio .audio_box .audio_card{
+  width: 325px;
+  height: 480px;
+  padding-top: 10px;
+  margin-bottom: 20px;
+  margin-left:20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
-.card .myh2 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #000;
-  margin: 5px 0;
+.audio .audio_box .audio_card .audio_image{
+  width: 350px;
+  height: 345px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
-.card .myh3 {
-  font-size: 14px;
-  font-weight: 600;
-  color: #555;
-  margin: 6px 0;
+.audio .audio_box .audio_card .audio_image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: 0.3s;
+}
+
+.audio .audio_box .audio_card .audio_image:hover img{
+  transform: scale(1.1);
+}
+
+.audio .audio_box .audio_card .small_card{
+  width: 45px;
+  height: 45px;
+  float: right;
+  position: relative;
+  top: -240px;
+  right: -8px;
+  opacity: 0;
+  border-radius: 7px;
+  transition: 0.3s;
+}
+
+.audio .audio_box .audio_card:hover .small_card{
+  position: relative;
+  top: -240px;
+  right: 20px;
+  opacity: 1;
+}
+
+.audio .audio_box .audio_card .small_card i{
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 50px;
+  color:black;
+  cursor: pointer;
+  text-shadow: 0 0 6px #000;
+  transition: 0.2s;
+}
+
+.audio .audio_box .audio_card .small_card i:hover{
+  color: red;
+}
+
+.audio .audio_box .audio_card .audio_info h2{
+  width: 60%;
   text-align: center;
+  margin: 10px auto 10px auto;
+  font-size: 25px;
+  color: #fac031;
 }
 
-.card .myp {
-  font-size: 14px;
+.audio .audio_box .audio_card .audio_info p{
+  text-align: center;
+  margin-top: 8px;
+  line-height: 21px;
 }
 
+.audio .audio_box .audio_card .audio_info h3{
+  text-align: center;
+  margin-top: 10px;
+}
+
+.audio .audio_box .audio_card .audio_info .audio_icon{
+  color: #fac031;
+  text-align: center;
+  margin: 10px 0 10px 0;
+}
+
+.audio .audio_box .audio_card .audio_info .audio_btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  background: #000;
+  padding: 8px 10px;
+  margin: 0 80px;
+  transition: 0.3s;
+}
+
+
+
+@media only screen and (max-width:500px) {
+  .audio h1{
+      font-size: 2rem;
+  }
+
+}
+@media only screen and (max-width:300px){
+  .audio h1{
+      font-size: 1rem;
+  }
+}
 
 
 .btn-overlay {

@@ -28,36 +28,42 @@ const Audio = () => {
   };
 
   return (
-    <div className="audio-box">
-      {data.map((item) => (
-        <div className="card" key={item._id}>
+    <div className="audio" id="Menu">
+      <h1>FAVOURITE<span>THINGS</span></h1>
 
-          {fileExtension(item.track) === 'mp4' ? (
-            <video
-              src={`http://localhost:4000/podcast-tracks/${encodeURIComponent(item.track.split('\\').pop().split('/').pop())}`}
-              controls
-              onClick={() => navigate(`/singlepage/${item._id}`)}
-            />
-          ) : (
-            <>
-              <div className="btn-overlay">
-                <i className="fa-solid fa-play plybtn" onClick={() => navigate(`/singlepage/${item._id}`)}></i>
+      <div className="audio_box">
+
+        {data.map((item) => (
+          <div className="audio_card" key={item._id}>
+
+            {fileExtension(item.track) === 'mp4' ? (
+              <video
+                src={`http://localhost:4000/podcast-tracks/${encodeURIComponent(item.track.split('\\').pop().split('/').pop())}`}
+                controls
+                onClick={() => navigate(`/singlepage/${item._id}`)}
+              />
+            ) : (
+              <div class="audio_image">
+                <div className="btn-overlay">
+                  <i className="fa-solid fa-play plybtn" onClick={() => navigate(`/singlepage/${item._id}`)}></i>
+                </div>
+                <img src={`${item.thumbnail.replace(/"/g, '')}`} alt="" className="img" />
+
               </div>
-              <img src={`${item.thumbnail.replace(/"/g, '')}`} alt="" className="img" />
-
-            </>
-          )}
+            )}
 
 
 
-          <div className="content">
-            <h2 className="myh2">{item.title}</h2>
-            <p className="text-center p-2">{item.artist}</p>
-            <p className="myp">1.3k &bull; {formatDate(item.date)}</p>
+            <div className="content">
+              <h2 className="myh2">{item.title}</h2>
+              <p className="text-center p-2">{item.artist}</p>
+              <p className="myp">1.3k &bull; {formatDate(item.date)}</p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
+
   );
 };
 
