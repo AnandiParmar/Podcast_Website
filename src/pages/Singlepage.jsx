@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link} from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import fileExtension from 'file-extension';
 
 
 function Singlepage() {
@@ -12,7 +12,7 @@ function Singlepage() {
   const [track, setTrack] = useState("");
   const [imgurl, setimgurl] = useState("");
   const [previd, setprevid] = useState("");
-  const [nextid,setnextid]=useState("");
+  const [nextid, setnextid] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,7 +31,7 @@ function Singlepage() {
           setprevid(alldata[prevIndex]._id);
           const nextIndex = [((index - 1 + alldata.length) % alldata.length)];
           setnextid(alldata[nextIndex]._id);
-          
+
         }
       })
     }
@@ -51,33 +51,44 @@ function Singlepage() {
       window.location.reload();
     }
   };
-  
+
   return (
     <>
 
       <div className="bg-black text-white py-5 mt-20 flex flex-col justify-center items-center h-fit">
         <div className=" flex flex-col items-center w-full h-max">
 
-          <img
-            src={imgurl}
-            alt={Data.title}
-            className="w-1/3 h-1/3 rounded-lg"
-          />
 
           <h2 className="text-lg font-bold uppercase">{Data.title}</h2>
           <p className="text-white capitalize">{Data.artist}</p>
           <p className=' mx-2'>{Data.desc}</p>
-          <audio
-            src={`http://localhost:4000/podcast-tracks/${decodeURIComponent(track)}`}
-            controls
-          />
+          {fileExtension(track) === 'mp4' ? (
+            <video
+              src={`http://localhost:4000/podcast-tracks/${encodeURIComponent(track)}`}
+              controls
+            />
+          ) : (
+            <>
+              <img
+                src={imgurl}
+                alt={Data.title}
+                className="w-1/3 h-1/3 rounded-lg"
+              />
+
+              <audio
+                src={`http://localhost:4000/podcast-tracks/${decodeURIComponent(track)}`}
+                controls
+              />
+            </>
+          )}
+
           <div>
             <button className="px-4 py-2 my-3 mx-2 text-white bg-indigo-500 rounded-lg hover:bg-indigo-700" onClick={handlePrev}  >
-            <i class="fa-solid fa-backward-step"></i>
+              <i class="fa-solid fa-backward-step"></i>
             </button>
             <button className="px-4 py-2 my-3 mx-2 text-white bg-indigo-500 rounded-lg hover:bg-indigo-700" onClick={handleNext} >
-            <i class="fa-solid fa-forward-step"></i>
-            
+              <i class="fa-solid fa-forward-step"></i>
+
             </button>
 
           </div>

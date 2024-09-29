@@ -11,7 +11,11 @@ import Signin from './pages/Signin'
 import profile from './pages/profile'
 import Singlepage from './pages/Singlepage'
 import AddAudioForm from './pages/AddAudioForm'
+<<<<<<< HEAD
 import Search from './component/search/Search'
+=======
+import Edit from './pages/Edit';
+>>>>>>> cd35b4a88d608914634c06d56772ff3a89573cc9
 function App() {
   return (
     <>
@@ -25,7 +29,12 @@ function App() {
           <Route path='/signin' exact Component={Signin}></Route>
           <Route path="/Singlepage/:id" exact Component={Singlepage}></Route>
           <Route path="/AddAudioForm" exact Component={AddAudioForm}></Route>
+<<<<<<< HEAD
           <Route path="/search" exact Component={Search}></Route>
+=======
+          <Route path="/edit/:id" exact Component={Edit}></Route>
+          
+>>>>>>> cd35b4a88d608914634c06d56772ff3a89573cc9
         </Routes>
         <Footer />
       </Router>
