@@ -28,7 +28,7 @@ const Audio = () => {
   };
 
   return (
-    <div className="audio" id="Menu">
+    <div className="audio">
       <h1>FAVOURITE<span>THINGS</span></h1>
 
       <div className="audio_box">
@@ -37,22 +37,28 @@ const Audio = () => {
           <div className="audio_card" key={item._id}>
 
             {fileExtension(item.track) === 'mp4' ? (
-              <video
-                src={`http://localhost:4000/podcast-tracks/${encodeURIComponent(item.track.split('\\').pop().split('/').pop())}`}
-                controls
-                onClick={() => navigate(`/singlepage/${item._id}`)}
-              />
-            ) : (
-              <div class="audio_image">
+              <div className="audio_image">
+                <video
+                  src={`http://localhost:4000/podcast-tracks/${decodeURIComponent(item.track.split('\\').pop().split('/').pop())}`}
+                  controls
+
+                />
                 <div className="btn-overlay">
                   <i className="fa-solid fa-play plybtn" onClick={() => navigate(`/singlepage/${item._id}`)}></i>
                 </div>
+              </div>
+            ) : (
+              <div class="audio_image">
                 <img src={`${item.thumbnail.replace(/"/g, '')}`} alt="" className="img" />
-
+                <div className="btn-overlay">
+                  <i className="fa-solid fa-play plybtn" onClick={() => navigate(`/singlepage/${item._id}`)}></i>
+                </div>
               </div>
             )}
 
-
+            <div class="small_card">
+              <i class="fa-solid fa-heart"></i>
+            </div>
 
             <div className="content">
               <h2 className="myh2">{item.title}</h2>

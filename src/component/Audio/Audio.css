@@ -17,7 +17,7 @@
   font-family: mv boli;
 }
 
-/* .audio-row h1 span::after{
+/* .audio h1 span::after{
   content: '';
   width: 100%;
   height: 2px;
@@ -40,26 +40,32 @@
 
 .audio .audio_box .audio_card{
   width: 325px;
-  height: 480px;
+  height:max-content;
   padding-top: 10px;
   margin-bottom: 20px;
   margin-left:20px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  border-radius: 20px;
 }
 
 .audio .audio_box .audio_card .audio_image{
-  width: 350px;
-  height: 345px;
+  width: 300px;
+  height: 245px;
   margin: 0 auto;
   overflow: hidden;
+  border-radius: 20px;
+  position: relative;
 }
 
 .audio .audio_box .audio_card .audio_image img{
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
   transition: 0.3s;
+  
+}
+.audio .audio_box .audio_card .audio_image video{
+  width: 100%;
+  height: 100%;
 }
 
 .audio .audio_box .audio_card .audio_image:hover img{
@@ -91,7 +97,7 @@
   align-items: center;
   justify-content: center;
   line-height: 50px;
-  color:black;
+  color:#fff;
   cursor: pointer;
   text-shadow: 0 0 6px #000;
   transition: 0.2s;
@@ -152,36 +158,15 @@
   }
 }
 
-
-.btn-overlay {
+.btn-overlay
+{
   position: absolute;
-  top: 25%;
+  top:40%;
+  font-size: 35px;
   left:40%;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
-  opacity: 0; 
-  transition: 0.2s; 
-}
-
-.card:hover .btn-overlay{
-  opacity: 1;
-}
-
-.plybtn {
-  text-decoration: none!important;
-  background-color: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 25px;
-  background-color: #000;
   color: #fff;
-  width: 20px;
-  height: 20px;
-  border-radius: 50px;
-  font-size: 25px;
+  background-color: rgba(0,0,0,0.7);
+  padding:10px 15px;
+  border-radius: 100%;
+  z-index: 1;
 }
