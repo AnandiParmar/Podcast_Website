@@ -11,9 +11,8 @@ import Signin from './pages/Signin'
 import profile from './pages/profile'
 import Singlepage from './pages/Singlepage'
 import AddAudioForm from './pages/AddAudioForm'
+import Search from './component/search/Search'
 function App() {
-
-
   return (
     <>
       <Router>
@@ -26,6 +25,7 @@ function App() {
           <Route path='/signin' exact Component={Signin}></Route>
           <Route path="/Singlepage/:id" exact Component={Singlepage}></Route>
           <Route path="/AddAudioForm" exact Component={AddAudioForm}></Route>
+          <Route path="/search" exact Component={Search}></Route>
         </Routes>
         <Footer />
       </Router>

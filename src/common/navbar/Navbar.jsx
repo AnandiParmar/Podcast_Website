@@ -4,6 +4,7 @@ import {Link,NavLink, useNavigate} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './Navbar.css'
 import podcast_logo from "../../images/podcast_logo.jpg"
+import Search from '../../component/search/Search';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(true);
@@ -18,8 +19,7 @@ function gotosignin(){
   navigate('/signin')
 }
   return (
-  <nav className='d-flex navbar fixed-top top-0' >
-
+  <nav className='d-flex navbar ' >
     <img src={podcast_logo} alt="" id='logo'/>
     <div className='container'>
         <ul className={isOpen==true?'#navbar active mx-auto animate-slideInRight':'#navbar mx-auto'} id="navbar">
@@ -28,7 +28,10 @@ function gotosignin(){
             {/* <li><Link to="/about">About us</Link></li> */}
             <li><Link to="/podcast">Podcast</Link></li>
             <li><Link to="/AddAudioForm">Add Podcast</Link></li>
-            <li><Link to="/profile">Profile</Link></li></div>
+            <li><Link to="/profile">Profile</Link></li>
+            <li><Link to="/search">Search</Link></li>
+            </div>
+
             <div>
               <button className='btn btn-secondary text-right mr-10' onClick={gotosignin}>Sign In</button>
             </div>     
