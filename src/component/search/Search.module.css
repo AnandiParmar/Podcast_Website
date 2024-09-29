@@ -1,5 +1,5 @@
 .mainSearch{
-    background-color: rgb(42, 40, 40);
+    background-color: white;
     padding: 50px 0px 50px 0px;
 }
 .searchHead{
@@ -12,18 +12,20 @@
     text-align: center;
 }
 .searchInput > input{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     margin-top: 20px;
     border-radius: 50px;
     width: 70%;
-    height: 40px;
-    background-color: #B6B6B6;
+    height: 55px;
+    background-color: #fff;
     padding: 5px 20px;
     outline: none;
-    
+    font-size: 17px;
+    font-weight: 500;
+    font-style: italic;
 }
-.searchInput > input:hover{
-    outline: 2px solid var(--theme);
-}
+
 .searchInput > input::placeholder{
     color: black;
+    font-weight: 500;
 }

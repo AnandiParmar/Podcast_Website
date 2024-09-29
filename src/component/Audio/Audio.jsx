@@ -29,8 +29,6 @@ const Audio = () => {
 
   return (
     <div className="audio">
-      <h1>FAVOURITE<span>THINGS</span></h1>
-
       <div className="audio_box">
 
         {data.map((item) => (
