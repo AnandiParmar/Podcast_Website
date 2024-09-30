@@ -1,17 +1,16 @@
-
-import React, { useEffect, useState } from 'react';
-import Cookies from 'js-cookie';
-import axios from 'axios';
-import 'react-toastify/ReactToastify.css';
+import React, { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import axios from "axios";
+import "react-toastify/ReactToastify.css";
 import { useParams, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/ReactToastify.css';
-import styles from './ProfilePage.module.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/ReactToastify.css";
+import styles from "./ProfilePage.module.css";
 
 function profile() {
   const [Data, setData] = useState({ name: "", email: "", userId: "" });
   const [user, setUser] = useState(false);
-  const [podcast, setpodcast] = useState([])
+  const [podcast, setpodcast] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,12 +27,11 @@ function profile() {
         setData({
           name: res.data.data.username,
           email: res.data.data.email,
-          userId: res.data.data._id
+          userId: res.data.data._id,
         });
         console.log(Data);
         setUser(true); // Set user to true after successful login
-      }
-      catch (error) {
+      } catch (error) {
         console.error("Error fetching user :", error);
       }
     };
@@ -51,9 +49,6 @@ function profile() {
     fetchData();
     fetchPodcastData(Data.userId);
   }, [Data.userId]);
-
-
-
 
   //Logout code
   const logout = async () => {
@@ -90,14 +85,16 @@ function profile() {
   //delete Podcast
   const del_podcast = async (podcastid) => {
     try {
-      await axios.delete(`http://localhost:4000/delete_podcast/${podcastid}`, {
-        headers: {
-          Authorization: `Bearer ${Cookies.get("user")}`,
-        }
-      }).then(() => {
-        navigate("/profile") // Reload the page
-        toast.success("successfully deleted podcast")
-      })
+      await axios
+        .delete(`http://localhost:4000/delete_podcast/${podcastid}`, {
+          headers: {
+            Authorization: `Bearer ${Cookies.get("user")}`,
+          },
+        })
+        .then(() => {
+          navigate("/profile"); // Reload the page
+          toast.success("successfully deleted podcast");
+        })
         .catch((error) => {
           if (error.response) {
             // Server responded with an error
@@ -112,69 +109,83 @@ function profile() {
         });
 
       console.log(podcastid);
-    }
-    catch (error) {
+    } catch (error) {
       console.error("Error deleting podcast:", error);
     }
-
-  }
+  };
   if (user) {
     return (
       <>
-        <div className='row pt-20'>
+        <div className="row pt-20">
           <div className="col-md-6 text-center">
             <h1>user Profile</h1>
-            <p className="text-black text-2xl font-bold">username:{Data.name}</p>
-            <p className="text-black text-base font-thin">email:
+            <p className="text-black text-2xl font-bold">
+              username:{Data.name}
+            </p>
+            <p className="text-black text-base font-thin">
+              email:
               {Data.email}
             </p>
           </div>
           <div className="col-md-6 flex items-center">
-            <button className='btn btn-lg' onClick={logout}>
+            <button className="btn btn-lg" onClick={logout}>
               Logout
             </button>
-            <button className='btn btn-lg' onClick={delAcc}>Delete Account</button>
+            <button className="btn btn-lg" onClick={delAcc}>
+              Delete Account
+            </button>
           </div>
         </div>
 
-        <div className='mt-5'>
-          <h1 className='text-center'>Your Podcast</h1>
-
+        <div className="mt-5">
+          <h1 className="text-center">Your Podcast</h1>
         </div>
-        <div className='d-flex flex-wrap items-center justify-center w-screen overflow-hidden'>
+        <div className="d-flex flex-wrap items-center justify-center w-screen overflow-hidden">
           {podcast.map((item) => (
             <div className={styles.box}>
               <div className={styles.imgbox}>
-                <img src={item.thumbnail} alt="" className='' />
+                <img src={item.thumbnail} alt="" className="" />
                 <div className={styles.iconbar}>
-                  <button onClick={() => {
-                    if (window.confirm("Are you sure you want to delete this podcast?")) {
-                      del_podcast(item._id);
-                    }
-                  }}>
-                    <abbr title="Delete Podcast"><i class="fa-solid fa-trash"></i></abbr>
+                  <button
+                    onClick={() => {
+                      if (
+                        window.confirm(
+                          "Are you sure you want to delete this podcast?"
+                        )
+                      ) {
+                        del_podcast(item._id);
+                      }
+                    }}
+                  >
+                    <abbr title="Delete Podcast">
+                      <i class="fa-solid fa-trash"></i>
+                    </abbr>
                   </button>
-                  <button onClick={() => {
-                    navigate(`/edit/${item._id}`)
-                  }}>
-                    <abbr title="Edit Podcast"><i class="fa-solid fa-pen-to-square"></i></abbr>
+                  <button
+                    onClick={() => {
+                      navigate(`/edit/${item._id}`);
+                    }}
+                  >
+                    <abbr title="Edit Podcast">
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    </abbr>
                   </button>
                 </div>
               </div>
-              <hr className='mx-auto w-50' />
-              <h2 className='font-mono text-xl font-bold uppercase'>{item.title}</h2>
+              <hr className="mx-auto w-50" />
+              <h2 className="font-mono text-xl font-bold uppercase">
+                {item.title}
+              </h2>
             </div>
           ))}
         </div>
       </>
-
-    )
-  }
-  else {
+    );
+  } else {
     toast.error("user have to login first");
     return (
       <>
-        <h1 className='pt-20 mb-20 h-full'>You have to Log in First</h1>
+        <h1 className="pt-20 mb-20 h-full">You have to Log in First</h1>
 
         <ToastContainer
           position="top-right"
@@ -183,9 +194,8 @@ function profile() {
           pauseOnHover
         />
       </>
-    )
+    );
   }
-
 }
 
-export default profile
+export default profile;

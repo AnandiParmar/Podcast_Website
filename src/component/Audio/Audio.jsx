@@ -10,23 +10,16 @@ const userCookie = Cookies.get("user");
 
 const AudioCard = ({ item }) => {
   const navigate = useNavigate();
-
   const formatDate = useCallback((date) => {
     return moment(date).fromNow();
-  }, []);
-
-  const like = () => {
-    const heart = document.getElementsByClassName("fa-heart")[0];
-    heart.style.color = "var(--theme)";
-  };
-
+  },[]);
   return (
-    <div className="audio_card" key={item._id}>
-      {fileExtension(item.track) === 'mp4' ? (
+    <div className="audio_card" key={item._id} >
+      { fileExtension(item.track) === 'mp4' ? (
         <div className="audio_image">
           <video
             poster={item.thumbnail}
-            src={`http://localhost:4000/podcast-tracks/${decodeURIComponent(item.track.split('\\').pop().split('/').pop())}`}
+            src={ `http://localhost:4000/podcast-tracks/${decodeURIComponent(item.track.split('\\').pop().split('/').pop())}`}
             controls
           />
           <div className="btn-overlay">
@@ -52,7 +45,7 @@ const AudioCard = ({ item }) => {
         </div>
       )}
       <div className="small_card">
-        <i className="fa-solid fa-heart" onClick={like}></i>
+        <i className="fa-solid fa-heart"></i>
       </div>
       <div className="content">
         <h2 className="font-serif myh2">{item.title}</h2>
@@ -65,8 +58,7 @@ const AudioCard = ({ item }) => {
 
 const Audio = () => {
   const [data, setData] = useState([]);
-  const navigate = useNavigate();
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
