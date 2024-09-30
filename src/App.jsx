@@ -13,7 +13,7 @@ import Singlepage from './pages/Singlepage'
 import AddAudioForm from './pages/AddAudioForm'
 import Search from './component/search/Search'
 import Edit from './pages/Edit';
-
+import fav from './pages/fav'
 function App() {
   return (
     <>
@@ -27,9 +27,8 @@ function App() {
           <Route path='/signin' exact Component={Signin}></Route>
           <Route path="/Singlepage/:id" exact Component={Singlepage}></Route>
           <Route path="/AddAudioForm" exact Component={AddAudioForm}></Route>
-
           <Route path="/search" exact Component={Search}></Route>
-
+          <Route path="/fav" exact Component={fav}></Route>
           <Route path="/edit/:id" exact Component={Edit}></Route>
           
 

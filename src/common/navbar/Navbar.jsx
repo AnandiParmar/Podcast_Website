@@ -31,6 +31,7 @@ function gotosignin(){
             <li><Link to="/AddAudioForm">Add Podcast</Link></li>
             <li><Link to="/profile">Profile</Link></li>
             <li><Link to="/search">Search</Link></li>
+            <li><Link to="/fav">Your Favourites</Link></li>
             </div>
 
             <div>

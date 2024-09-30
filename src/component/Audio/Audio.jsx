@@ -63,8 +63,13 @@ const Audio = () => {
             </div>
 
             <div className="content">
+<<<<<<< HEAD
               <h2 className="myh2">{item.title}</h2>
               <p className="text-center audio-artist">{item.artist}</p>
+=======
+              <h2 className="font-serif text-xl">{item.title}</h2>
+              <p className="text-center p-2">{item.artist}</p>
+>>>>>>> ae64e825d9b27c54bda067607d8d84b9ab23ebf4
               <p className="myp">1.3k &bull; {formatDate(item.date)}</p>
             </div>
           </div>
