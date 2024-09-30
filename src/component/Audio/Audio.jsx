@@ -44,9 +44,6 @@ const AudioCard = ({ item }) => {
           </div>
         </div>
       )}
-      <div className="small_card">
-        <i className="fa-solid fa-heart"></i>
-      </div>
       <div className="content">
         <h2 className="font-serif myh2">{item.title}</h2>
         <p className="text-center audio-artist">{item.artist}</p>

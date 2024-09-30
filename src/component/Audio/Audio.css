@@ -157,7 +157,10 @@
   border-radius: 100%;
   z-index: 1;
 }
-
+.myp
+{
+  text-align: center;
+}
 @media only screen and (max-width:500px) {
   .audio h1{
       font-size: 2rem;

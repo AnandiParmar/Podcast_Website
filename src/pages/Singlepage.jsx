@@ -16,7 +16,8 @@ function Singlepage() {
   const [imgurl, setimgurl] = useState("");
   const [previd, setprevid] = useState("");
   const [nextid, setnextid] = useState("");
-  const [isFav, setisFav] = useState();
+  const [isFav, setisFav] = useState(false);
+  const [match, setmatch] = useState();
   const userCookie = Cookies.get("user");
   useEffect(() => {
     const fetchData = async () => {
@@ -53,34 +54,53 @@ function Singlepage() {
           },
         });
       const favdata = result.data.data;
-      const match = favdata.filter((item) => item._id === Data._id);
-      if (match) {
-        setisFav(true);
-      }
+      setmatch(favdata.filter((item) => item._id === Data._id));
+    }
+    if (match && match.length !== 0) {
+      setisFav(true);
+    } else {
+      setisFav(false);
     }
     fetchElement();
-  }, [Data])
+  }, [Data,match])
+ 
+  const RemoveFav = async () => {
+    const result = await axios.delete(`http://localhost:4000/fav/${Data._id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${userCookie}`,
+        },
+      });
+    console.log(result);
+  }
+
+  const addFav = async () => {
+    if (userCookie) {
+
+      try {
+        const res = await axios.post(
+          "http://localhost:4000/fav/",
+          { id },
+          {
+            headers: {
+              Authorization: `Bearer ${userCookie}`,
+            },
+          }
+        );
+        console.log(res.data);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }
   const handelfavToggle = async () => {
-
-
-
-    // if (userCookie) {
-
-    //   try {
-    //     const res = await axios.post(
-    //       "http://localhost:4000/fav/",
-    //       { id },
-    //       {
-    //         headers: {
-    //           Authorization: `Bearer ${userCookie}`,
-    //         },
-    //       }
-    //     );
-    //     console.log(res.data);
-    //   } catch (e) {
-    //     console.error(e);
-    //   }
-    // }
+    setisFav(!isFav);
+    if (!isFav) {
+      addFav();
+    }
+    if (isFav) {
+      RemoveFav();
+    }
   };
 
 
@@ -129,7 +149,7 @@ function Singlepage() {
             </>
           )}
 
-          <div>
+          <div className='text-2xl'>
             <button className="px-4 py-2 my-3 mx-2 text-white bg-indigo-500 rounded-lg hover:bg-indigo-700" onClick={handlePrev}  >
               <i className="fa-solid fa-backward-step"></i>
             </button>
@@ -137,7 +157,7 @@ function Singlepage() {
               <i className="fa-solid fa-forward-step"></i>
             </button>
             <button className="px-4 py-2 my-3 mx-2 text-white bg-indigo-500 rounded-lg hover:bg-indigo-700" onClick={handelfavToggle} >
-              <i className={isFav ? `fa-solid fa-heart` : `fa-regular fa-heart`}></i>
+              <i className={isFav ? `fa-solid fa-heart text-red-500` : `fa-regular fa-heart`}></i>
             </button>
 
           </div>
