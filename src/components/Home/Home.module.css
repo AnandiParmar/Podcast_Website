@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
 @media only screen and (min-width: 375px) {
-  h2 {
+  #overlay h2 {
     font-size: 50px;
     font-weight: 700;
     text-align: center;
@@ -15,16 +15,12 @@
   font-family: "raleway";
 }
 
-/* body {
-  overflow: hidden;
-} */
-
-.herocontainer {
+#herocontainer {
   width: 100%;
   height: 100vh;
 }
 
-.overlay {
+#overlay {
   height: 100vh;
   width: 100%;
 }
@@ -36,7 +32,7 @@ video {
   filter: brightness(0.7);
 }
 
-.container {
+#bg_container {
   max-width: 640px;
   padding-left: 15px;
   padding-right: 15px;
@@ -53,16 +49,16 @@ video {
   color: #fff;
 }
 
-h2 {
+#overlay h2 {
   font-size: 50px;
   font-weight: 700;
 }
 
-h2 span {
+#overlay h2 span {
   color: rgb(126, 17, 126);
 }
 
-h3 {
+#overlay h3 {
   font-size: 25px;
   padding-top: 10px;
   color: #fff;
@@ -72,7 +68,7 @@ h3 {
   text-underline-offset: 8px;
 }
 
-p {
+#overlay p {
   margin-top: 20px;
   text-align: center;
   display: block;
@@ -84,7 +80,7 @@ p {
   width: 100%;
 }
 
-.play {
+#play {
   padding: 7px 20px;
   border: none;
   outline: none;
@@ -92,44 +88,11 @@ p {
   transition: 0.5s;
 }
 
-.play i {
+#play i {
   padding-right: 7px;
 }
 
-.play:hover {
+#play:hover {
   background-color: rgb(126, 17, 126);
   color: #fff;
-}
-
-.menu-subscribe {
-  margin-bottom: 0;
-}
-
-li {
-  list-style: none;
-  text-align: center;
-}
-
-li a {
-  color: #fff;
-  text-decoration: none;
-}
-
-#menu {
-  padding: 0;
-}
-
-.menu-subscribe li {
-  margin: 0 20px;
-}
-
-.label {
-  font-size: 20px;
-  text-decoration: underline;
-  text-decoration-color: rgb(126, 17, 126);
-  text-underline-offset: 8px;
-}
-
-.menu-subscribe li i {
-  padding: 5px;
 }
