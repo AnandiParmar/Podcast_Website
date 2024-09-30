@@ -4,8 +4,9 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import fileExtension from 'file-extension';
+import Cookies from "js-cookie";
 
-
+const userCookie=Cookies.get("user");
 
 const Audio = () => {
   const [data, setData] = useState([]);
@@ -21,12 +22,14 @@ const Audio = () => {
       }
     };
     fetchData();
+
   }, []);
 
   const formatDate = (date) => {
     return moment(date).fromNow();
   };
 
+  
   return (
     <div className="audio">
       <div className="audio_box">
@@ -53,10 +56,7 @@ const Audio = () => {
                 </div>
               </div>
             )}
-
-            <div class="small_card">
-              <i class="fa-solid fa-heart"></i>
-            </div>
+           
 
             <div className="content">
               <h2 className="font-serif text-xl">{item.title}</h2>
