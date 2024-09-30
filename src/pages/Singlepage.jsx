@@ -3,7 +3,10 @@ import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import fileExtension from 'file-extension';
+import Cookies from 'js-cookie';
+import { data } from 'autoprefixer';
 
+import styles from "../pages/Singlepage.module.css";
 
 function Singlepage() {
   const navigate = useNavigate();
@@ -13,7 +16,7 @@ function Singlepage() {
   const [imgurl, setimgurl] = useState("");
   const [previd, setprevid] = useState("");
   const [nextid, setnextid] = useState("");
-
+  const userCookie = Cookies.get("user");
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get(`http://localhost:4000/podcast/${id}`);
@@ -39,6 +42,27 @@ function Singlepage() {
 
   }, [])
 
+  const handelfavToggle = async () => {
+    if (userCookie) {
+      const id = Data._id;
+      console.log(id);
+    }
+    const res = await axios.post(
+      "http://localhost:4000/fav",
+      { id },
+      {
+        headers: {
+          Authorization: `Bearer ${userCookie}`,
+        },
+      }
+    );
+
+
+
+    console.log("res.data : ", res.data);
+
+  }
+
   const handlePrev = () => {
     if (previd) {
       navigate(`/singlepage/${previd}`, { replace: true });
@@ -55,17 +79,18 @@ function Singlepage() {
   return (
     <>
 
-      <div className="bg-black text-white py-5 mt-20 flex flex-col justify-center items-center h-fit">
+      <div className={styles.singlepage}>
         <div className=" flex flex-col items-center w-full h-max">
 
 
-          <h2 className="text-lg font-bold uppercase">{Data.title}</h2>
-          <p className="text-white capitalize">{Data.artist}</p>
-          <p className=' mx-2'>{Data.desc}</p>
+          <h2>{Data.title}</h2>
+          <p className={styles.single_artist}>{Data.artist}</p>
+          <p className=' mx-2 '>{Data.desc}</p>
           {fileExtension(track) === 'mp4' ? (
             <video
               src={`http://localhost:4000/podcast-tracks/${encodeURIComponent(track)}`}
               controls
+              autoPlay={true}
             />
           ) : (
             <>
@@ -78,6 +103,7 @@ function Singlepage() {
               <audio
                 src={`http://localhost:4000/podcast-tracks/${decodeURIComponent(track)}`}
                 controls
+                className='mt-5'
               />
             </>
           )}
@@ -89,7 +115,9 @@ function Singlepage() {
             <button className="px-4 py-2 my-3 mx-2 text-white bg-indigo-500 rounded-lg hover:bg-indigo-700" onClick={handleNext} >
               <i class="fa-solid fa-forward-step"></i>
             </button>
-            
+            <button className="px-4 py-2 my-3 mx-2 text-white bg-indigo-500 rounded-lg hover:bg-indigo-700" onClick={handelfavToggle} >
+              <i class="fa-solid fa-heart text-xl"></i>
+            </button>
 
           </div>
 

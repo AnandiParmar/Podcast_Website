@@ -1,6 +1,6 @@
 import "./App.css";
 import B from "./components/B/B";
-import Home from "./components/Home/Home";
+// import Home from "./components/Home/Home";
 import Latest from "./components/Latest/Latest";
 import Recent from "./components/Recent/Recent";
 import './App.css'
@@ -18,16 +18,8 @@ import AddAudioForm from './pages/AddAudioForm'
 import Search from './component/search/Search'
 import Edit from './pages/Edit';
 import fav from './pages/fav'
+import HomePage from "./pages/HomePage";
 
-// function App() {
-//   return (
-//     <>
-//       <Home />
-//       <Latest />
-//       <Recent />
-//       <B />
-//     </>
-//   );
 
 
 function App() {
@@ -36,8 +28,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" exact Component={Home}></Route>
-          {/* <Route path="/about" exact Component={About}></Route> */}
+          <Route path="/" exact Component={HomePage}></Route>
           <Route path='/podcast' exact Component={Podcast}></Route>
           <Route path='/profile' exact Component={profile}></Route>
           <Route path='/signin' exact Component={Signin}></Route>
@@ -46,12 +37,8 @@ function App() {
           <Route path="/search" exact Component={Search}></Route>
           <Route path="/fav" exact Component={fav}></Route>
           <Route path="/edit/:id" exact Component={Edit}></Route>
-          <Home />
-          <Latest />
-          <Recent />
-          <B />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
 
 

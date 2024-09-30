@@ -10,7 +10,7 @@ import image6 from "../../assets/i6.jpg";
 const Latest = () => {
   return (
     <>
-      <div className="header">
+      <div className="header pt-10">
         <h1 className="heading" id={styles.heading}>
           LATEST EPISODES
         </h1>
