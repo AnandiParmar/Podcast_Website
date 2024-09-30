@@ -1,0 +1,30 @@
+
+.form input:hover,.form textarea:hover
+{
+  outline:2px solid purple;
+}
+.pwd
+{
+  position: absolute;
+  right:10px;  
+  top:60%;
+}
+
+@media screen and (max-width:768px)
+{
+   .form
+   {
+    width:100%;
+    border: none;
+    padding: 0;
+    margin: 0;
+   }
+   .form div
+   {
+    width:300px;
+   }
+   .form label{
+    margin: 0;
+    padding: 0;
+   }
+}

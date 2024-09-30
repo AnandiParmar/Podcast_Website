@@ -1,0 +1,32 @@
+footer{
+    background-color:#000;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    border-top: 5px solid var(--green);
+}
+footer #social_links span
+{
+   font-size: 30px;
+   font-family: Raleway;
+   font-weight: 800;
+}
+footer  a
+{
+    text-decoration: none;
+}
+footer  #icon i
+{
+    border:2px solid white !important;
+    border-radius:100% ;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    font-size:1.3rem ;
+    padding-top:8px ;
+}
+footer  #icon i:hover{
+    color: var(--theme);
+    border:2px solid var(--theme)!important;
+   
+}

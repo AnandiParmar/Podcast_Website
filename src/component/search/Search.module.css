@@ -1,0 +1,31 @@
+.mainSearch{
+    background-color: white;
+    padding: 50px 0px 50px 0px;
+}
+.searchHead{
+    color: rgb(126, 17, 126);
+    font-style: italic;
+    text-align: center;
+    
+}
+.searchInput{
+    text-align: center;
+}
+.searchInput > input{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-top: 20px;
+    border-radius: 50px;
+    width: 70%;
+    height: 55px;
+    background-color: #fff;
+    padding: 5px 20px;
+    outline: none;
+    font-size: 17px;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.searchInput > input::placeholder{
+    color: black;
+    font-weight: 500;
+}

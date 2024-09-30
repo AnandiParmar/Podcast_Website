@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* body {
   background-color: rgb(42, 40, 40);
 } */
@@ -70,3 +71,36 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+=======
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root
+{
+  --theme:rgb(126, 17, 126);
+}
+
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+   font-family: Raleway;
+}
+body
+{
+  overflow-x: hidden;
+}
+/* .btn
+{
+  justify-content: center;
+  align-items: center;
+  background-color: var(--theme)!important;
+  padding: 10px;
+  margin:0px 30px;
+  height: max-content;
+  color: white!important;
+} */
+
+>>>>>>> 04b0ad59ecbafcd5ac024d5e2bcdfcec801df7c2

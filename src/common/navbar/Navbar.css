@@ -1,0 +1,138 @@
+nav
+{
+    margin-top: 0;
+    align-items: center;
+    justify-content: space-between;
+    background-color:  white;
+    height: 80px;
+    padding-bottom:0;
+    z-index: 1;
+    display: flex;
+    position: sticky;
+    box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1);
+}
+ul
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav ul li 
+{
+    list-style: none; 
+    padding: 0 20px;
+    position: relative;
+}
+
+nav ul li a
+{
+    padding: 3px;
+    text-decoration: none;
+    color: rgb(126, 17, 126);;
+    font-weight: 600;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    transition: 0.3s all ease-in-out;
+} 
+nav ul li a:hover
+{
+    color: var(--theme);
+}
+nav ul li a:hover::after
+{
+    content:'';
+    width: 30%;
+    color: var(--theme);
+    height: 2px;
+    background-color: var(--theme);
+    position: absolute;
+    bottom:-4px ;
+    left: 25px;
+}
+.menu{
+    display: flex;
+}  
+#mobile i
+{
+    color:#fff;
+}
+#mobile
+{
+    display: none;
+    border: 3px solid white;
+    padding:10px 15px;
+    border-radius: 10px;
+}
+#navbar{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+#logo{
+    height: 70px;
+    width: 70px;
+}
+
+#signin{
+    padding: 10px 40px 10px 40px;
+    background-color: rgb(126, 17, 126);
+    color: #fff;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+
+@media screen and (max-width:768px)
+{
+    nav
+    {
+        position: fixed;
+        flex-direction: column;
+        background-color: black;
+    }
+    #navbar{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: fixed;
+        top:70px;
+        right: 0;
+        width: 300px;
+        height: 100vh;
+        background-color: black;
+        box-shadow: 0 40px 60px rgba(0,0,0,0.1);
+        padding: 40px 0 0 10px;
+        transition: 0.3s all ease-out;
+        
+    }
+    #navbar.active
+    {
+        right: 0;
+        width: 0;
+        padding-left: 0;
+        margin: 0;
+    }
+    nav li{
+        margin-bottom: 25px;
+        
+    }  
+    .menu{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        
+    }  
+    #mobile
+    {
+        right: 0;
+        position: fixed;
+        display: block;
+        cursor: pointer;
+        margin-right: 50px;
+    }
+    #mobile i
+    {
+        font-size: 24px;
+    }
+}
