@@ -103,6 +103,7 @@ function Singlepage() {
               <audio
                 src={`http://localhost:4000/podcast-tracks/${decodeURIComponent(track)}`}
                 controls
+                className='mt-5'
               />
             </>
           )}
