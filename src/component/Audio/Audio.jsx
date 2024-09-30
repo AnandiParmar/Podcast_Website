@@ -29,7 +29,11 @@ const Audio = () => {
     return moment(date).fromNow();
   };
 
-  
+
+  const like = () =>{
+    const heart = document.getElementsByClassName("fa-heart")[0];
+    heart.style.color = "var(--theme)";
+  }
   return (
     <div className="audio">
       <div className="audio_box">
@@ -40,6 +44,7 @@ const Audio = () => {
             {fileExtension(item.track) === 'mp4' ? (
               <div className="audio_image">
                 <video
+                 poster={item.thumbnail}
                   src={`http://localhost:4000/podcast-tracks/${decodeURIComponent(item.track.split('\\').pop().split('/').pop())}`}
                   controls
 
@@ -56,12 +61,18 @@ const Audio = () => {
                 </div>
               </div>
             )}
-           
+
+
+            <div class="small_card">
+              <i class="fa-solid fa-heart" onClick={like}></i>
+            </div>
 
             <div className="content">
-              <h2 className="font-serif text-xl">{item.title}</h2>
+            <h2 className="myh2">{item.title}</h2>
+              <p className="text-center audio-artist">{item.artist}</p>
+           <h2 className="font-serif text-xl">{item.title}</h2>
               <p className="text-center p-2">{item.artist}</p>
-              <p className="myp">1.3k &bull; {formatDate(item.date)}</p>
+         <p className="myp">1.3k &bull; {formatDate(item.date)}</p>
             </div>
           </div>
         ))}
