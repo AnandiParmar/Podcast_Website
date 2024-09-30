@@ -20,15 +20,6 @@ import Edit from './pages/Edit';
 import fav from './pages/fav'
 import HomePage from "./pages/HomePage";
 
-// function App() {
-//   return (
-//     <>
-//       <Home />
-//       <Latest />
-//       <Recent />
-//       <B />
-//     </>
-//   );
 
 
 function App() {
@@ -46,12 +37,8 @@ function App() {
           <Route path="/search" exact Component={Search}></Route>
           <Route path="/fav" exact Component={fav}></Route>
           <Route path="/edit/:id" exact Component={Edit}></Route>
-          {/* <Home />
-          <Latest />
-          <Recent />
-          <B /> */}
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
 
 

@@ -36,7 +36,7 @@ video {
   filter: brightness(0.7);
 }
 
-.container {
+.home-container {
   max-width: 640px;
   padding-left: 15px;
   padding-right: 15px;

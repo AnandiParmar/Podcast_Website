@@ -16,6 +16,7 @@ function Singlepage() {
   const [imgurl, setimgurl] = useState("");
   const [previd, setprevid] = useState("");
   const [nextid, setnextid] = useState("");
+  const [isFav, setisFav] = useState();
   const userCookie = Cookies.get("user");
   useEffect(() => {
     const fetchData = async () => {
@@ -36,32 +37,52 @@ function Singlepage() {
           setnextid(alldata[nextIndex]._id);
 
         }
-      })
+      });
+
     }
     fetchData();
 
   }, [])
-
-  const handelfavToggle = async () => {
-    if (userCookie) {
+  useEffect(() => {
+    const fetchElement = async () => {
       const id = Data._id;
-      console.log(id);
-    }
-    const res = await axios.post(
-      "http://localhost:4000/fav",
-      { id },
-      {
-        headers: {
-          Authorization: `Bearer ${userCookie}`,
-        },
+      const result = await axios.get("http://localhost:4000/fav/",
+        {
+          headers: {
+            Authorization: `Bearer ${userCookie}`,
+          },
+        });
+      const favdata = result.data.data;
+      const match = favdata.filter((item) => item._id === Data._id);
+      if (match) {
+        setisFav(true);
       }
-    );
+    }
+    fetchElement();
+  }, [Data])
+  const handelfavToggle = async () => {
 
 
 
-    console.log("res.data : ", res.data);
+    // if (userCookie) {
 
-  }
+    //   try {
+    //     const res = await axios.post(
+    //       "http://localhost:4000/fav/",
+    //       { id },
+    //       {
+    //         headers: {
+    //           Authorization: `Bearer ${userCookie}`,
+    //         },
+    //       }
+    //     );
+    //     console.log(res.data);
+    //   } catch (e) {
+    //     console.error(e);
+    //   }
+    // }
+  };
+
 
   const handlePrev = () => {
     if (previd) {
@@ -110,20 +131,19 @@ function Singlepage() {
 
           <div>
             <button className="px-4 py-2 my-3 mx-2 text-white bg-indigo-500 rounded-lg hover:bg-indigo-700" onClick={handlePrev}  >
-              <i class="fa-solid fa-backward-step"></i>
+              <i className="fa-solid fa-backward-step"></i>
             </button>
             <button className="px-4 py-2 my-3 mx-2 text-white bg-indigo-500 rounded-lg hover:bg-indigo-700" onClick={handleNext} >
-              <i class="fa-solid fa-forward-step"></i>
+              <i className="fa-solid fa-forward-step"></i>
             </button>
             <button className="px-4 py-2 my-3 mx-2 text-white bg-indigo-500 rounded-lg hover:bg-indigo-700" onClick={handelfavToggle} >
-              <i class="fa-solid fa-heart text-xl"></i>
+              <i className={isFav ? `fa-solid fa-heart` : `fa-regular fa-heart`}></i>
             </button>
 
           </div>
 
         </div>
       </div>
-
 
     </>
   )
