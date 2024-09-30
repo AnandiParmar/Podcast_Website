@@ -1,4 +1,8 @@
-
+import "./App.css";
+import B from "./components/B/B";
+import Home from "./components/Home/Home";
+import Latest from "./components/Latest/Latest";
+import Recent from "./components/Recent/Recent";
 import './App.css'
 import Footer from './common/footer/Footer'
 import Register from './common/LoginRegister/Register'
@@ -14,6 +18,18 @@ import AddAudioForm from './pages/AddAudioForm'
 import Search from './component/search/Search'
 import Edit from './pages/Edit';
 import fav from './pages/fav'
+
+// function App() {
+//   return (
+//     <>
+//       <Home />
+//       <Latest />
+//       <Recent />
+//       <B />
+//     </>
+//   );
+
+
 function App() {
   return (
     <>
@@ -30,8 +46,10 @@ function App() {
           <Route path="/search" exact Component={Search}></Route>
           <Route path="/fav" exact Component={fav}></Route>
           <Route path="/edit/:id" exact Component={Edit}></Route>
-          
-
+          <Home />
+          <Latest />
+          <Recent />
+          <B />
         </Routes>
         <Footer />
       </Router>

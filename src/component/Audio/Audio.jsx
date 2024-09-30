@@ -4,8 +4,9 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import fileExtension from 'file-extension';
+import Cookies from "js-cookie";
 
-
+const userCookie=Cookies.get("user");
 
 const Audio = () => {
   const [data, setData] = useState([]);
@@ -21,11 +22,14 @@ const Audio = () => {
       }
     };
     fetchData();
+
   }, []);
 
   const formatDate = (date) => {
     return moment(date).fromNow();
   };
+
+
   const like = () =>{
     const heart = document.getElementsByClassName("fa-heart")[0];
     heart.style.color = "var(--theme)";
@@ -59,6 +63,7 @@ const Audio = () => {
               </div>
             )}
 
+<<<<<<< HEAD
             <div className="small_card">
               <i className="fa-solid fa-heart" onClick={like}></i>
             </div>
@@ -68,6 +73,19 @@ const Audio = () => {
               <p className="text-center audio-artist">{item.artist}</p>
               
               <p className="myp">1.3k &bull; {formatDate(item.date)}</p>
+=======
+
+            <div class="small_card">
+              <i class="fa-solid fa-heart" onClick={like}></i>
+            </div>
+
+            <div className="content">
+            <h2 className="myh2">{item.title}</h2>
+              <p className="text-center audio-artist">{item.artist}</p>
+           <h2 className="font-serif text-xl">{item.title}</h2>
+              <p className="text-center p-2">{item.artist}</p>
+         <p className="myp">1.3k &bull; {formatDate(item.date)}</p>
+>>>>>>> 5bf138086f0490dd9ef73ef72963fda59b48c4b4
             </div>
           </div>
         ))}

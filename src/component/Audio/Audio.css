@@ -105,6 +105,19 @@
 }
 
 
+.audio .audio_box .audio_card .audio_info h2{
+  width: 60%;
+  text-align: center;
+  margin: 10px auto 10px auto;
+  font-size: 25px;
+  color: #fac031;
+}
+
+.audio .audio_box .audio_card .audio_info p{
+  text-align: center;
+  margin-top: 8px;
+  line-height: 21px;
+}
 
 .audio .audio_box .audio_card .audio_info h3{
   text-align: center;
@@ -169,3 +182,22 @@
       font-size: 1rem;
   }
 }
+<<<<<<< HEAD
+=======
+.btn-overlay
+{
+  position: absolute;
+  display: flex;
+  justify-content: center ;
+  top:40%;
+  font-size: 25px;
+  left:40%;
+  color: #fff;
+  background-color: rgba(0,0,0,0.7);
+  padding-top: 14px;
+  border-radius: 100%;
+  z-index: 1;
+  height: 50px;
+  width: 50px;
+}
+>>>>>>> 5bf138086f0490dd9ef73ef72963fda59b48c4b4
