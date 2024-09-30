@@ -32,6 +32,7 @@ const Audio = () => {
   }
   return (
     <div className="audio">
+      <h1 className="audio-head">Podcast</h1>
       <div className="audio_box">
 
         {data.map((item) => (
@@ -50,7 +51,7 @@ const Audio = () => {
                 </div>
               </div>
             ) : (
-              <div class="audio_image">
+              <div className="audio_image">
                 <img src={`${item.thumbnail.replace(/"/g, '')}`} alt="" className="img" />
                 <div className="btn-overlay">
                   <i className="fa-solid fa-play plybtn" onClick={() => navigate(`/singlepage/${item._id}`)}></i>
@@ -58,18 +59,14 @@ const Audio = () => {
               </div>
             )}
 
-            <div class="small_card">
-              <i class="fa-solid fa-heart" onClick={like}></i>
+            <div className="small_card">
+              <i className="fa-solid fa-heart" onClick={like}></i>
             </div>
 
             <div className="content">
-<<<<<<< HEAD
-              <h2 className="myh2">{item.title}</h2>
+              <h2 className="font-serif myh2">{item.title}</h2>
               <p className="text-center audio-artist">{item.artist}</p>
-=======
-              <h2 className="font-serif text-xl">{item.title}</h2>
-              <p className="text-center p-2">{item.artist}</p>
->>>>>>> ae64e825d9b27c54bda067607d8d84b9ab23ebf4
+              
               <p className="myp">1.3k &bull; {formatDate(item.date)}</p>
             </div>
           </div>

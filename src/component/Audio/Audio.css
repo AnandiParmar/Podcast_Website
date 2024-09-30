@@ -1,3 +1,4 @@
+
 *{
   margin: 0;
   padding: 0;
@@ -8,47 +9,48 @@
 }
 
 .audio h1{
-  font-size: 3rem;
+
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-size: 5rem;
 }
 
 
-/* .audio h1 span::after{
-  content: '';
-  width: 100%;
-  height: 2px;
-  background: #fac031;
-  display: block;
-  position: relative;
-  bottom: 15px;
-} */
 
 .audio .audio_box{
   width: 95%;
   margin: 0 auto;
   display: flex;
-  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
-  /* grid-gap: 15px; */
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
-
+.audio-head{
+  color: var(--theme);
+  font-style: italic;
+  
+}
 .audio .audio_box .audio_card{
-  width: 325px;
+  background-color:rgba(126, 17, 126,0.09) ;
+  width: 350px;
+  margin: 20px;
   height:max-content;
   padding-top: 10px;
   margin-bottom: 20px;
   margin-left:20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 18px 0px  rgba(126, 17, 126,0.2) ;
   border-radius: 20px;
+  border: 1px solid rgba(126, 17, 126,0.2) ;
 }
 
+
 .audio .audio_box .audio_card .audio_image{
-  width: 300px;
+  width: 325px;
   height: 245px;
   margin: 0 auto;
   overflow: hidden;
@@ -133,7 +135,7 @@
   text-align: center;
   display: flex;
   justify-content: center;
-  margin-top: -10px;
+  padding-bottom: 20px;
 
 }
 .myp{
@@ -142,7 +144,19 @@
 .audio-artist{
   color: rgb(180, 106, 180);
 }
-
+.btn-overlay
+{
+  position: absolute;
+  top:35%;
+  font-size: 22px;
+  left:40%;
+  color: white ;
+  background-color: black ;
+  opacity: 0.7;
+  padding:10px 20px;
+  border-radius: 100%;
+  z-index: 1;
+}
 
 @media only screen and (max-width:500px) {
   .audio h1{
@@ -154,16 +168,4 @@
   .audio h1{
       font-size: 1rem;
   }
-}
-.btn-overlay
-{
-  position: absolute;
-  top:40%;
-  font-size: 35px;
-  left:40%;
-  color: #fff;
-  background-color: rgba(0,0,0,0.7);
-  padding:10px 15px;
-  border-radius: 100%;
-  z-index: 1;
 }

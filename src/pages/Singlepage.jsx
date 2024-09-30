@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import fileExtension from 'file-extension';
-
+import styles from "../pages/Singlepage.module.css";
 
 function Singlepage() {
   const navigate = useNavigate();
@@ -55,17 +55,18 @@ function Singlepage() {
   return (
     <>
 
-      <div className="bg-black text-white py-5 mt-20 flex flex-col justify-center items-center h-fit">
+      <div className={styles.singlepage}>
         <div className=" flex flex-col items-center w-full h-max">
 
 
-          <h2 className="text-lg font-bold uppercase">{Data.title}</h2>
-          <p className="text-white capitalize">{Data.artist}</p>
-          <p className=' mx-2'>{Data.desc}</p>
+          <h2>{Data.title}</h2>
+          <p className={styles.single_artist}>{Data.artist}</p>
+          <p className=' mx-2 '>{Data.desc}</p>
           {fileExtension(track) === 'mp4' ? (
             <video
               src={`http://localhost:4000/podcast-tracks/${encodeURIComponent(track)}`}
               controls
+              autoPlay={true}
             />
           ) : (
             <>

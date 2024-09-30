@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
+.singlepage{
+   color: black;
+}
+.singlepage video{
+    height: 35vw;
+    width: 70%;
+    margin: auto;
+}
+
+.singlepage h2{
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: 3.5rem;
+    margin-top: 50px;
+}
+
+.single_artist{
+    font-size: 2rem;
+    color: var(--theme);
+    text-transform: capitalize;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500;
+}

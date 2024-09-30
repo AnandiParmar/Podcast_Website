@@ -4,15 +4,19 @@
 }
 .searchHead{
     color: rgb(126, 17, 126);
-    font-style: italic;
+    font-style: italic; 
     text-align: center;
+    font-weight: 900;
+    font-size: 4rem;
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
     
 }
 .searchInput{
     text-align: center;
 }
 .searchInput > input{
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgba(99, 99, 99, 0.3) 0px 6px 8px 0px;
     margin-top: 20px;
     border-radius: 50px;
     width: 70%;
@@ -23,6 +27,7 @@
     font-size: 17px;
     font-weight: 500;
     font-style: italic;
+    background-color:rgba(126, 17, 126,0.05) ;
 }
 
 .searchInput > input::placeholder{
