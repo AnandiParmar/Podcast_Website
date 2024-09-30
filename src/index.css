@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /* body {
   background-color: rgb(42, 40, 40);
 } */
@@ -71,7 +71,7 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
-=======
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -103,4 +103,4 @@ body
   color: white!important;
 } */
 
->>>>>>> 04b0ad59ecbafcd5ac024d5e2bcdfcec801df7c2
+

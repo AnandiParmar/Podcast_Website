@@ -63,13 +63,8 @@ const Audio = () => {
             )}
 
 
-            <div class="small_card">
-              <i class="fa-solid fa-heart" onClick={like}></i>
-            </div>
 
             <div className="content">
-            <h2 className="myh2">{item.title}</h2>
-              <p className="text-center audio-artist">{item.artist}</p>
            <h2 className="font-serif text-xl">{item.title}</h2>
               <p className="text-center p-2">{item.artist}</p>
          <p className="myp">1.3k &bull; {formatDate(item.date)}</p>
