@@ -1,3 +1,7 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 .audio{
   width: 100%;
   padding: 70px 0;
@@ -103,23 +107,7 @@
   transition: 0.2s;
 }
 
-.audio .audio_box .audio_card .small_card i:hover{
-  color: red;
-}
 
-.audio .audio_box .audio_card .audio_info h2{
-  width: 60%;
-  text-align: center;
-  margin: 10px auto 10px auto;
-  font-size: 25px;
-  color: #fac031;
-}
-
-.audio .audio_box .audio_card .audio_info p{
-  text-align: center;
-  margin-top: 8px;
-  line-height: 21px;
-}
 
 .audio .audio_box .audio_card .audio_info h3{
   text-align: center;
@@ -144,6 +132,21 @@
   transition: 0.3s;
 }
 
+.myh2{
+  width: 100%;
+  font-size: 1.5rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-top: -10px;
+
+}
+.myp{
+  color: gray;
+}
+.audio-artist{
+  color: rgb(180, 106, 180);
+}
 
 
 @media only screen and (max-width:500px) {
