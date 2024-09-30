@@ -3,6 +3,9 @@ import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import fileExtension from 'file-extension';
+import Cookies from 'js-cookie';
+import { data } from 'autoprefixer';
+
 import styles from "../pages/Singlepage.module.css";
 
 function Singlepage() {
@@ -13,7 +16,7 @@ function Singlepage() {
   const [imgurl, setimgurl] = useState("");
   const [previd, setprevid] = useState("");
   const [nextid, setnextid] = useState("");
-
+  const userCookie = Cookies.get("user");
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get(`http://localhost:4000/podcast/${id}`);
@@ -38,6 +41,27 @@ function Singlepage() {
     fetchData();
 
   }, [])
+
+  const handelfavToggle = async () => {
+    if (userCookie) {
+      const id = Data._id;
+      console.log(id);
+    }
+    const res = await axios.post(
+      "http://localhost:4000/fav",
+      { id },
+      {
+        headers: {
+          Authorization: `Bearer ${userCookie}`,
+        },
+      }
+    );
+
+
+
+    console.log("res.data : ", res.data);
+
+  }
 
   const handlePrev = () => {
     if (previd) {
@@ -79,6 +103,7 @@ function Singlepage() {
               <audio
                 src={`http://localhost:4000/podcast-tracks/${decodeURIComponent(track)}`}
                 controls
+                className='mt-5'
               />
             </>
           )}
@@ -90,7 +115,9 @@ function Singlepage() {
             <button className="px-4 py-2 my-3 mx-2 text-white bg-indigo-500 rounded-lg hover:bg-indigo-700" onClick={handleNext} >
               <i class="fa-solid fa-forward-step"></i>
             </button>
-            
+            <button className="px-4 py-2 my-3 mx-2 text-white bg-indigo-500 rounded-lg hover:bg-indigo-700" onClick={handelfavToggle} >
+              <i class="fa-solid fa-heart text-xl"></i>
+            </button>
 
           </div>
 
