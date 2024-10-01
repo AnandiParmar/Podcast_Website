@@ -118,7 +118,7 @@ function profile() {
       <>
         <div className="row pt-20">
           <div className="col-md-6 text-center">
-            <h1>user Profile</h1>
+            <h1 className="page-header">User Profile</h1>
             <p className="text-black text-2xl font-bold">
               username:{Data.name}
             </p>
@@ -128,17 +128,17 @@ function profile() {
             </p>
           </div>
           <div className="col-md-6 flex items-center">
-            <button className="btn btn-lg" onClick={logout}>
+            <button className="btn btn-lg mx-3" style={{backgroundColor:"var(--theme)",color:"#fff"}} onClick={logout}>
               Logout
             </button>
-            <button className="btn btn-lg" onClick={delAcc}>
+            <button className="btn btn-lg" style={{backgroundColor:"var(--theme)",color:"#fff"}} onClick={delAcc}>
               Delete Account
             </button>
           </div>
         </div>
 
         <div className="mt-5">
-          <h1 className="text-center">Your Podcast</h1>
+          <h1 className="text-center page-header">Your Podcast</h1>
         </div>
         <div className="d-flex flex-wrap items-center justify-center w-screen overflow-hidden">
           {podcast.map((item) => (

@@ -1,15 +1,17 @@
 import React from "react";
 import styles from "../Home/Home.module.css";
 import vid from "../../assets/v2.mp4";
+import { Navigate, useNavigate } from "react-router-dom";
 // import "./../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const Home = () => {
+  const navigate=useNavigate();
   return (
     <>
 
       <div className="herocontainer">
         <div className="overlay">
-          <video src={vid} autoPlay loop muted></video>
+          {/* <video src={vid} autoPlay loop muted></video> */}
           <div className="home-container overlay-container container-self-center">
             {/* <h2 className="mb-24 mb-sm-24 mb-md-20"> */}
             <div className="herocontainer" id={styles.herocontainer}>

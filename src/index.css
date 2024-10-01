@@ -4,22 +4,32 @@
 @tailwind components;
 @tailwind utilities;
 
-:root
-{
-  --theme:rgb(126, 17, 126);
+:root {
+  --theme: rgb(126, 17, 126);
 }
 
-*
-{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-   font-family: Raleway;
+  font-family: Raleway;
 }
-body
-{
+
+body {
   overflow-x: hidden;
 }
+
+.page-header {
+  color: rgb(126, 17, 126);
+  font-style: italic;
+  text-align: center;
+  font-weight: 900;
+  font-size: 4rem;
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+
+}
+
 /* .btn
 {
   justify-content: center;
