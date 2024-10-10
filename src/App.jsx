@@ -38,7 +38,7 @@ function App() {
           <Route path="/fav" exact Component={fav}></Route>
           <Route path="/edit/:id" exact Component={Edit}></Route>
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </Router>
 
 

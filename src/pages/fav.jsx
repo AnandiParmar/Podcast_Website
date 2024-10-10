@@ -33,29 +33,35 @@ function fav() {
 
   useEffect(() => {
     const fetchPodcast = async () => {
-      if (favData.length === 0) return;
+      if (favData.length === 0) {
+        return
+      };
 
-      const promises = favData.map(async (item) => {
-        const res = await axios.get(`http://localhost:4000/podcast/${item._id}`);
-        return res.data.data;
-      });
+      if (favData) {
+        const promises = favData.map(async (item) => {
+          const res = await axios.get(`http://localhost:4000/podcast/${item._id}`);
+          return res.data.data;
+        });
 
-      Promise.all(promises).then((podcasts) => {
-        setData(podcasts);
-      }).catch((error) => {
-        setError(error);
-      });
+        Promise.all(promises).then((podcasts) => {
+          setData(podcasts);
+        }).catch((error) => {
+          setError(error);
+        });
+
+      }
     };
     fetchPodcast();
   }, [favData]);
-
+  console.log(favData)
   const AudioCard = ({ item }) => {
     const navigate = useNavigate();
     const formatDate = useCallback((date) => {
       return moment(date).fromNow();
     }, []);
+
     return (
-      <div className="audio_card" key={item._id} >
+      <div className="audio_card" key={item?._id}>
         {fileExtension(item.track) === 'mp4' ? (
           <div className="audio_image">
             <video
@@ -66,7 +72,7 @@ function fav() {
             <div className="btn-overlay">
               <i
                 className="fa-solid fa-play plybtn"
-                onClick={() => navigate(`/singlepage/${encodeURIComponent(item._id)}`)}
+                onClick={() => navigate(`/singlepage/${encodeURIComponent(item?._id)}`)}
               ></i>
             </div>
           </div>
@@ -80,7 +86,7 @@ function fav() {
             <div className="btn-overlay">
               <i
                 className="fa-solid fa-play plybtn"
-                onClick={() => navigate(`/singlepage/${encodeURIComponent(item._id)}`)}
+                onClick={() => navigate(`/singlepage/${encodeURIComponent(item?._id)}`)}
               ></i>
             </div>
           </div>
@@ -98,11 +104,14 @@ function fav() {
     <div className="audio">
       <h1 className="audio-head">Podcast</h1>
       <div className="audio_box">
-        {data.map((item) => (
-          <AudioCard item={item} key={item._id} />
+
+        {data.filter(item => item !== null).map((item) => (
+          <AudioCard item={item} key={item?._id} />
         ))}
+
+
       </div>
-    </div>  
+    </div>
   )
 }
 

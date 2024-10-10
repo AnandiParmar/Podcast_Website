@@ -43,7 +43,7 @@ const Footer =() =>
                    
                     <h6 className="text-uppercase fw-bold mb-4">
                         <i className="fas fa-gem me-3"></i> <a className="navbar-brand site-brand"
-                            href="#">Trip<span>Boss</span></a>
+                            href="#">Pod<span>Vibes</span></a>
                     </h6>
                     <p>
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi repudiandae blanditiis
@@ -55,19 +55,19 @@ const Footer =() =>
                 <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                    
                     <h6 className="text-uppercase fw-bold mb-4">
-                        Popular Places:
+                        Quick Links:
                     </h6>
                     <p>
-                        <a href="#!" className="text-reset">Thailand</a>
+                        <a href="#!" className="text-reset">Home</a>
                     </p>
                     <p>
-                        <a href="#!" className="text-reset">Australia</a>
+                        <a href="#!" className="text-reset">Podcast</a>
                     </p>
                     <p>
-                        <a href="#!" className="text-reset">Maldives</a>
+                        <a href="#!" className="text-reset">Favourites</a>
                     </p>
                     <p>
-                        <a href="#!" className="text-reset">Switzerland</a>
+                        <a href="#!" className="text-reset">Search</a>
                     </p>
                 </div>
                
@@ -77,7 +77,7 @@ const Footer =() =>
                     <p><i className="fas fa-home me-3"></i> New York, NY 10012, US</p>
                     <p>
                         <i className="fas fa-envelope me-3"></i>
-                        tripboss001@gmail.com
+                        abc001@gmail.com
                     </p>
                     <p><i className="fas fa-phone me-3"></i> + 01 234 567 88</p>
                     <p><i className="fas fa-print me-3"></i> + 01 234 567 89</p>
@@ -91,7 +91,7 @@ const Footer =() =>
 
     <div className="text-center p-4" >
         © 2024 Copyright:
-        <a className="text-reset fw-bold" href="#">tripboss.com</a>
+        <a className="text-reset fw-bold" href="#">podvibes.com</a>
     </div>
     
 </footer>
