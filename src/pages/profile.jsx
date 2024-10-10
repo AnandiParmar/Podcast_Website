@@ -13,6 +13,11 @@ function profile() {
   const [podcast, setpodcast] = useState([]);
   const navigate = useNavigate();
 
+  const playPodcast=(podcastid)=>{
+    console.log("Play id",podcastid);
+     navigate(`/Singlepage/${podcastid}`);
+  }
+
   useEffect(() => {
     //Fetching data to get user profile
     const fetchData = async () => {
@@ -113,6 +118,8 @@ function profile() {
       console.error("Error deleting podcast:", error);
     }
   };
+
+
   if (user) {
     return (
       <>
@@ -169,6 +176,9 @@ function profile() {
                     <abbr title="Edit Podcast">
                       <i class="fa-solid fa-pen-to-square"></i>
                     </abbr>
+                  </button>
+                  <button onClick={()=>playPodcast(item._id)}>
+                  <i class="fa-solid fa-play"></i>
                   </button>
                 </div>
               </div>
